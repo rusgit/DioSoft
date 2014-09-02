@@ -26,5 +26,4 @@
     <bean id="collectionHelper" class="com.diosoft.impl.CollectionHelper">
     </bean>
 
-
 </beans>
