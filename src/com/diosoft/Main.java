@@ -103,5 +103,8 @@ public class Main {
         System.out.println("  >>> OUTER JOIN: \n");
         serviceArray.outerJoin(firstArray, secondArray);
 
+
+      //  for (int i=0;i<10;i++)
+      //      System.out.println(Arrays.toString(Person[].class.getInterfaces()));
     }
 }

@@ -13,4 +13,5 @@ public interface JoinOperationByCollection {
 
     public <T> List<T> outerJoin(List<T> firstArray, List<T> secondArray);
 
+
 }

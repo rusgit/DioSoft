@@ -9,6 +9,9 @@ import javax.inject.Named;
 @Named("arrayHelper")
 public class ArrayHelper implements JoinOperationByArray {
 
+    public ArrayHelper(){
+    }
+
    public Person[] merge(Person[] firstArray, Person[] secondArray) {
 
         int firstArrayLength = getLength(firstArray);

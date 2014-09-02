@@ -11,7 +11,20 @@
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context-3.0.xsd " >
 
- 	<context:annotation-config />
-	<context:component-scan base-package="com.diosoft.*" />
+
+    <bean id="serviceArray" class="com.diosoft.service.ServiceArray">
+        <constructor-arg index="0" ref="arrayHelper"></constructor-arg>
+    </bean>
+
+    <bean id="serviceCollection" class="com.diosoft.service.ServiceCollection">
+        <constructor-arg index="0" ref="collectionHelper"></constructor-arg>
+    </bean>
+
+    <bean id="arrayHelper" class="com.diosoft.impl.ArrayHelper">
+    </bean>
+
+    <bean id="collectionHelper" class="com.diosoft.impl.CollectionHelper">
+    </bean>
+
 
 </beans>

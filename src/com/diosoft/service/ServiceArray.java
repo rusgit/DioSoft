@@ -13,7 +13,6 @@ public class ServiceArray {
 
     private static final Logger LOG = Logger.getLogger(ServiceArray.class);
 
-    @Inject
     private JoinOperationByArray joinOperationByArray;
 
     public ServiceArray(JoinOperationByArray joba) {

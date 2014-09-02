@@ -7,6 +7,9 @@ import java.util.*;
 @Named("collectionHelper")
 public class CollectionHelper implements JoinOperationByCollection {
 
+    public CollectionHelper(){
+    }
+
     @Override
     public <T> Set<T> merge(List<T> firstColl, List<T> secondColl) {
 
