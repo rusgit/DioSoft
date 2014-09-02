@@ -3,6 +3,7 @@ package com.diosoft.service;
 import com.diosoft.domain.Person;
 import com.diosoft.impl.CollectionHelper;
 import com.diosoft.util.PersonComparator;
+import com.diosoft.util.ServiceFactory;
 import org.junit.Test;
 
 import java.util.*;
@@ -39,9 +40,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        List<Person> actualColl = collectionService.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
         Collections.sort(actualColl, new PersonComparator());
@@ -60,9 +60,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        List<Person> actualColl = collectionService.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
         Collections.sort(actualColl, new PersonComparator());
@@ -81,9 +80,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = null;
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        List<Person> actualColl = collectionService.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
         Collections.sort(actualColl, new PersonComparator());
@@ -103,9 +101,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        List<Person> actualColl = collectionService.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
         Collections.sort(actualColl, new PersonComparator());
@@ -125,9 +122,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        List<Person> actualColl = collectionService.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
         Collections.sort(actualColl, new PersonComparator());
@@ -147,9 +143,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        List<Person> actualColl = collectionService.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
         Collections.sort(actualColl, new PersonComparator());
@@ -169,9 +164,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        Set<Person> actualColl = sc.merge(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        Set<Person> actualColl = collectionService.merge(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
@@ -187,9 +181,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = null;
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        Set<Person> actualColl = sc.merge(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        Set<Person> actualColl = collectionService.merge(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
@@ -206,9 +199,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        Set<Person> actualColl = sc.merge(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        Set<Person> actualColl = collectionService.merge(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
@@ -225,9 +217,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        Set<Person> actualColl = sc.merge(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        Set<Person> actualColl = collectionService.merge(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
@@ -244,9 +235,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        Set<Person> actualColl = sc.innerJoin(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        Set<Person> actualColl = collectionService.innerJoin(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
@@ -262,9 +252,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = null;
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        Set<Person> actualColl = sc.innerJoin(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        Set<Person> actualColl = collectionService.innerJoin(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
@@ -281,9 +270,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        Set<Person> actualColl = sc.innerJoin(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        Set<Person> actualColl = collectionService.innerJoin(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
@@ -300,9 +288,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        Set<Person> actualColl = sc.innerJoin(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        Set<Person> actualColl = collectionService.innerJoin(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
@@ -319,9 +306,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        List<Person> actualColl = sc.outerJoin(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        List<Person> actualColl = collectionService.outerJoin(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
         Collections.sort(actualColl, new PersonComparator());
@@ -340,9 +326,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = null;
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        List<Person> actualColl = sc.outerJoin(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        List<Person> actualColl = collectionService.outerJoin(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
         Collections.sort(actualColl, new PersonComparator());
@@ -362,9 +347,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        List<Person> actualColl = sc.outerJoin(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        List<Person> actualColl = collectionService.outerJoin(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
         Collections.sort(actualColl, new PersonComparator());
@@ -384,9 +368,8 @@ public class ServiceCollectionTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
-        ServiceCollection sc = new ServiceCollection(ch);
-        List<Person> actualColl = sc.outerJoin(firstColl,secondColl);
+        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
+        List<Person> actualColl = collectionService.outerJoin(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
         Collections.sort(actualColl, new PersonComparator());

@@ -1,10 +1,10 @@
 package com.diosoft;
 
 import com.diosoft.domain.Person;
-import com.diosoft.service.ServiceArray;
-import com.diosoft.service.ServiceCollection;
-import com.diosoft.util.NaturalComparator;
+import com.diosoft.service.ArrayService;
+import com.diosoft.service.CollectionService;
 import com.diosoft.util.PersonComparator;
+import com.diosoft.util.ServiceFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -65,10 +65,15 @@ public class Main {
 
         System.out.println("\n   Compare First array and Second array: " + Arrays.equals(firstArray, secondArray));
 
-
+// SPRING CONTEXT
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/app-context.xml");
-        ServiceCollection serviceCollection = (ServiceCollection) ctx.getBean("serviceCollection");
-        ServiceArray serviceArray = (ServiceArray) ctx.getBean("serviceArray");
+        CollectionService serviceCollection = (CollectionService) ctx.getBean("serviceCollection");
+        ArrayService serviceArray = (ArrayService) ctx.getBean("serviceArray");
+
+// FACTORY (ALTERNATIVE WAY)
+//        CollectionService collectionService =  ServiceFactory.CollectionServiceFactory.create();
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+
 
 // LEFT UNION (COLLECTION IMPLEMENTATION)
         System.out.println("\n  >>> LEFT UNION: \n");
@@ -96,5 +101,7 @@ public class Main {
 // OUTER JOIN (ARRAY IMPLEMENTATION)
         System.out.println("  >>> OUTER JOIN: \n");
         serviceArray.outerJoin(firstArray, secondArray);
+
+
    }
 }

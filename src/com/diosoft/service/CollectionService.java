@@ -7,18 +7,18 @@ import javax.inject.Named;
 import java.util.*;
 
 @Named("serviceCollection")
-public class ServiceCollection {
+public class CollectionService {
 
-    private static final Logger LOG = Logger.getLogger(ServiceCollection.class);
+    private static final Logger LOG = Logger.getLogger(CollectionService.class);
 
     @Inject
     private JoinOperationByCollection joinOperationByCollection;
 
-    public ServiceCollection(JoinOperationByCollection jobc) {
+    public CollectionService(JoinOperationByCollection jobc) {
         this.joinOperationByCollection = jobc;
     }
 
-    public ServiceCollection() {
+    public CollectionService() {
     }
 
     public <T> Set<T> merge(List<T> firstColl, List<T> secondColl) {

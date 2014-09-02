@@ -2,8 +2,8 @@ package com.diosoft.service;
 
 import com.diosoft.domain.Person;
 import com.diosoft.impl.ArrayHelper;
-import com.diosoft.service.ServiceArray;
 import com.diosoft.util.PersonComparator;
+import com.diosoft.util.ServiceFactory;
 import org.junit.Test;
 import java.util.Arrays;
 import static org.junit.Assert.assertArrayEquals;
@@ -33,10 +33,9 @@ public class ServiceArrayTest {
         Person[] firstArray = {person1, person4, person3, person5};
         Person[] secondArray = {person1, person2, person3, person6, person7, person4};
         Person[] expectedArray = {person1, person4, person3, person5, person1, person4, person3};
-
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.leftUnion(firstArray,secondArray);
+        
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -51,9 +50,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {person1, person3, person2};
         Person[] expectedArray = {};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.leftUnion(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -68,9 +66,8 @@ public class ServiceArrayTest {
         Person[] secondArray = null;
         Person[] expectedArray = {person1, person3, person2};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.leftUnion(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -85,9 +82,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {person1, person3, person2, person10};
         Person[] expectedArray = {};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.leftUnion(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -102,9 +98,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {};
         Person[] expectedArray = {person1, person3, person2, person10};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.leftUnion(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -115,20 +110,12 @@ public class ServiceArrayTest {
     @Test
     public void testLeftUnion_WithDuplicateArray() throws Exception {
 
-        Person[] firstArray = {
-                person1,
-                person3,
-                person2,
-                person1_dupl,
-                person3_dupl
-        };
-
+        Person[] firstArray = {person1,person3,person2,person1_dupl,person3_dupl};
         Person[] secondArray = {person10, person3, person2, person1, person3_dupl};
         Person[] expectedArray = {person1, person3, person2, person1_dupl, person3_dupl, person3, person2, person1, person3_dupl};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.leftUnion(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -143,9 +130,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {person1, person2, person3, person6, person7, person4};
         Person[] expectedArray = {person1, person2, person3, person4, person5, person6, person7};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.merge(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.merge(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -160,9 +146,8 @@ public class ServiceArrayTest {
         Person[] secondArray = null;
         Person[] expectedArray = {person1, person3, person2};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.merge(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.merge(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -177,9 +162,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {};
         Person[] expectedArray = {person1, person3, person2, person10};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.merge(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.merge(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -194,9 +178,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {person10, person3, person2, person1, person3_dupl};
         Person[] expectedArray = {person1, person3, person2, person10};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.merge(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.merge(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -211,9 +194,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {person10, person4, person1, person4, person7};
         Person[] expectedArray = {person1, person10};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.innerJoin(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.innerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -228,9 +210,8 @@ public class ServiceArrayTest {
         Person[] secondArray = null;
         Person[] expectedArray = {};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.innerJoin(firstArray, secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.innerJoin(firstArray, secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -245,9 +226,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {};
         Person[] expectedArray = {};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.innerJoin(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.innerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -262,9 +242,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {person1, person3, person6 ,person6_dupl,};
         Person[] expectedArray = {person1, person3};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.innerJoin(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.innerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -279,9 +258,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {person2, person4, person7};
         Person[] expectedArray = {person5, person1, person6, person3, person4};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.outerJoin(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.outerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -296,9 +274,8 @@ public class ServiceArrayTest {
         Person[] secondArray = null;
         Person[] expectedArray = {person1, person3, person2};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.outerJoin(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.outerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -313,9 +290,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {};
         Person[] expectedArray = {person1, person3, person2};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.outerJoin(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.outerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
@@ -330,9 +306,8 @@ public class ServiceArrayTest {
         Person[] secondArray = {person3, person2, person3_dupl};
         Person[] expectedArray = {person1, person1_dupl};
 
-        ArrayHelper arrayHelper = new ArrayHelper();
-        ServiceArray serviceDelegate = new ServiceArray(arrayHelper);
-        Person[] actualArray = serviceDelegate.outerJoin(firstArray,secondArray);
+        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        Person[] actualArray = arrayService.outerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());

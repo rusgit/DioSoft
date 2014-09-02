@@ -8,18 +8,18 @@ import javax.inject.Named;
 import java.util.Arrays;
 
 @Named("serviceArray")
-public class ServiceArray {
+public class ArrayService {
 
-    private static final Logger LOG = Logger.getLogger(ServiceArray.class);
+    private static final Logger LOG = Logger.getLogger(ArrayService.class);
 
     @Inject
     private JoinOperationByArray joinOperationByArray;
 
-    public ServiceArray(JoinOperationByArray joba) {
+    public ArrayService(JoinOperationByArray joba) {
         this.joinOperationByArray = joba;
     }
 
-    public ServiceArray() {
+    public ArrayService() {
     }
 
     public Person[] merge(Person[] firstArray, Person[] secondArray) {

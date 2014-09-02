@@ -2,8 +2,6 @@ package com.diosoft.impl;
 
 import com.diosoft.interfaces.JoinOperationByCollection;
 import com.diosoft.util.NaturalComparator;
-import com.diosoft.util.PersonComparator;
-
 import javax.inject.Named;
 import java.util.*;
 
