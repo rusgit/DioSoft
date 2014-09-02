@@ -1,4 +1,0 @@
-DioSoft
-=======
-
-DioSoft Lab
