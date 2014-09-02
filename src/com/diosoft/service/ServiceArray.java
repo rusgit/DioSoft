@@ -1,6 +1,5 @@
 package com.diosoft.service;
 
-import com.diosoft.impl.ArrayHelper;
 import com.diosoft.domain.Person;
 import com.diosoft.interfaces.JoinOperationByArray;
 import org.apache.log4j.Logger;
@@ -13,6 +12,7 @@ public class ServiceArray {
 
     private static final Logger LOG = Logger.getLogger(ServiceArray.class);
 
+    @Inject
     private JoinOperationByArray joinOperationByArray;
 
     public ServiceArray(JoinOperationByArray joba) {

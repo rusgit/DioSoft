@@ -12,6 +12,7 @@ public class ServiceCollection {
 
     private static final Logger LOG = Logger.getLogger(ServiceCollection.class);
 
+    @Inject
     private JoinOperationByCollection joinOperationByCollection;
 
     public ServiceCollection(JoinOperationByCollection jobc) {
