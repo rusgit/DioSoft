@@ -1,6 +1,10 @@
 package com.diosoft.impl;
 
+import com.diosoft.domain.Person;
 import com.diosoft.interfaces.JoinOperationByCollection;
+import com.diosoft.util.PersonComparator;
+import org.springframework.beans.support.PropertyComparator;
+
 import javax.inject.Named;
 import java.util.*;
 
@@ -11,31 +15,33 @@ public class CollectionHelper implements JoinOperationByCollection {
     }
 
     @Override
-    public <T> Set<T> merge(List<T> firstColl, List<T> secondColl) {
+    public Set<Person> merge(List<Person> firstColl, List<Person> secondColl) {
 
        if (getLength(firstColl) == 0)
-            return new HashSet<T>(secondColl);
+            return new HashSet<Person>(secondColl);
 
        if (getLength(secondColl) == 0)
-            return new HashSet<T>(firstColl);
+            return new HashSet<Person>(firstColl);
 
-       Set<T> result = new HashSet<T>(firstColl);
+       Set<Person> result = new HashSet<Person>(firstColl);
        result.addAll(secondColl);
        return result;
     }
 
     @Override
-    public <T> List<T> leftUnion(List<T> firstColl, List<T> secondColl) {
+    public List<Person> leftUnion(List<Person> firstColl, List<Person> secondColl) {
 
         if (getLength(firstColl) == 0)
-            return new ArrayList<T>();
+            return new ArrayList<Person>();
 
         if (getLength(secondColl) == 0)
-            return new ArrayList<T>(firstColl);
+            return new ArrayList<Person>(firstColl);
 
-        List<T> result = new ArrayList<T>(firstColl);
-        for (T person : secondColl) {
-            if (result.contains(person)) {
+        List<Person> result = new ArrayList<Person>(firstColl);
+        Collections.sort(result,new PersonComparator());
+        for (Person person : secondColl) {
+            int p = Collections.binarySearch(result,person);
+            if (p>=0) {
                 result.add(person);
             }
         }
@@ -43,41 +49,41 @@ public class CollectionHelper implements JoinOperationByCollection {
     }
 
     @Override
-    public <T> Set<T> innerJoin(List<T> firstColl, List<T> secondColl) {
+    public Set<Person> innerJoin(List<Person> firstColl, List<Person> secondColl) {
 
         if (getLength(firstColl) == 0)
-            return new HashSet<T>();
+            return new HashSet<Person>();
 
         if (getLength(secondColl) == 0)
-            return new HashSet<T>();
+            return new HashSet<Person>();
 
-        Set<T> result = new HashSet<T>(firstColl);
+        Set<Person> result = new HashSet<Person>(firstColl);
         result.retainAll(secondColl);
         return result;
     }
 
     @Override
-    public <T> List<T> outerJoin(List<T> firstColl, List<T> secondColl) {
+    public List<Person> outerJoin(List<Person> firstColl, List<Person> secondColl) {
 
         if (getLength(firstColl) == 0)
-            return new ArrayList<T>(secondColl);
+            return new ArrayList<Person>(secondColl);
 
         if (getLength(secondColl) == 0)
-            return new ArrayList<T>(firstColl);
+            return new ArrayList<Person>(firstColl);
 
-        List<T> result1 = new ArrayList<T>(firstColl);
+        List<Person> result1 = new ArrayList<Person>(firstColl);
         result1.removeAll(secondColl);
-        List<T> result2 = new ArrayList<T>(secondColl);
+        List<Person> result2 = new ArrayList<Person>(secondColl);
         result2.removeAll(firstColl);
 
-        List<T> result = new ArrayList<T>();
+        List<Person> result = new ArrayList<Person>();
         result.addAll(result1);
         result.addAll(result2);
 
         return result;
     }
 
-    private <T> int getLength(Collection<T> coll) {
+    private int getLength(Collection<Person> coll) {
         return coll != null ? coll.size() : 0;
     }
 }

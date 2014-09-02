@@ -4,6 +4,7 @@ import com.diosoft.domain.Person;
 import com.diosoft.impl.ArrayHelper;
 import com.diosoft.service.ServiceArray;
 import com.diosoft.service.ServiceCollection;
+import com.diosoft.util.PersonComparator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -61,6 +62,11 @@ public class Main {
         System.out.println(Arrays.toString(firstArray));
         System.out.println("      Second array:\n");
         System.out.println(Arrays.toString(secondArray));
+        System.out.println("\n   Compare First array and Second array: " + Arrays.equals(firstArray, secondArray));
+        Arrays.sort(firstArray, new PersonComparator());
+        PersonComparator ps = new PersonComparator();
+        System.out.println(ps.compare(person1, person2));
+
         System.out.println("\n   Compare First array and Second array: " + Arrays.equals(firstArray, secondArray));
 
 

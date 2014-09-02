@@ -1,6 +1,6 @@
 package com.diosoft.domain;
 
-public class Person implements Comparable {
+public class Person implements Comparable<Person> {
 
     //local code review (vtegza): if you prefer inner class - put it in the bottom of file/class @ 31.08.14
     // (rusgit): corrected
@@ -65,7 +65,7 @@ public class Person implements Comparable {
 
     //local code review (vtegza): try with Comporator @ 31.08.14
     @Override
-    public int compareTo(Object obj) {
+    public int compareTo(Person obj) {
         if (obj == null) return 1;
         Person person = (Person) obj;
         int result = name.compareTo(person.name);

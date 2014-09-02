@@ -1,8 +1,8 @@
 package com.diosoft.service;
 
+import com.diosoft.domain.Person;
 import com.diosoft.interfaces.JoinOperationByCollection;
 import org.apache.log4j.Logger;
-
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.*;
@@ -22,13 +22,13 @@ public class ServiceCollection {
     public ServiceCollection() {
     }
 
-    public <T> Set<T> merge(List<T> firstColl, List<T> secondColl) {
+    public Set<Person> merge(List<Person> firstColl, List<Person> secondColl) {
         LOG.info("First Collection: ");
         LOG.info(firstColl);
         LOG.info("Second Collection: ");
         LOG.info(secondColl);
 
-        Set<T> result = joinOperationByCollection.merge(firstColl,secondColl);
+        Set<Person> result = joinOperationByCollection.merge(firstColl,secondColl);
 
         LOG.info("Result Collection: ");
         LOG.info(result);
@@ -36,13 +36,13 @@ public class ServiceCollection {
         return result;
     }
 
-    public <T> List<T> leftUnion(List<T> firstColl, List<T> secondColl) {
+    public List<Person> leftUnion(List<Person> firstColl, List<Person> secondColl) {
         LOG.info("First Collection: ");
         LOG.info(firstColl);
         LOG.info("Second Collection: ");
         LOG.info(secondColl);
 
-        List<T> result = joinOperationByCollection.leftUnion(firstColl,secondColl);
+        List<Person> result = joinOperationByCollection.leftUnion(firstColl,secondColl);
 
         LOG.info("Result Collection: ");
         LOG.info(result);
@@ -50,13 +50,13 @@ public class ServiceCollection {
         return result;
     }
 
-    public <T> Set<T> innerJoin(List<T> firstColl, List<T> secondColl) {
+    public Set<Person> innerJoin(List<Person> firstColl, List<Person> secondColl) {
         LOG.info("First Collection: ");
         LOG.info(firstColl);
         LOG.info("Second Collection: ");
         LOG.info(secondColl);
 
-        Set<T> result = joinOperationByCollection.innerJoin(firstColl,secondColl);
+        Set<Person> result = joinOperationByCollection.innerJoin(firstColl,secondColl);
 
         LOG.info("Result Collection: ");
         LOG.info(result);
@@ -64,13 +64,13 @@ public class ServiceCollection {
         return result;
     }
 
-    public <T> List<T> outerJoin(List<T> firstColl, List<T> secondColl) {
+    public List<Person> outerJoin(List<Person> firstColl, List<Person> secondColl) {
         LOG.info("First Collection: ");
         LOG.info(firstColl);
         LOG.info("Second Collection: ");
         LOG.info(secondColl);
 
-        List<T> result = joinOperationByCollection.outerJoin(firstColl,secondColl);
+        List<Person> result = joinOperationByCollection.outerJoin(firstColl,secondColl);
 
         LOG.info("Result Collection: ");
         LOG.info(result);
