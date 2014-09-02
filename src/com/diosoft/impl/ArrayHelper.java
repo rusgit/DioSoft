@@ -20,9 +20,6 @@ public class ArrayHelper implements JoinOperationByArray {
         if (firstArrayLength == 0)
             return deleteDuplicate(secondArray);
 
-        if (secondArrayLenght == 0)
-            return deleteDuplicate(firstArray);
-
 
         Person[] mergeArray = new Person[firstArray.length + secondArray.length];
 // Add all elements from First Array and Second Array
