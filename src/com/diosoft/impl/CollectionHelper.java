@@ -65,12 +65,15 @@ public class CollectionHelper implements JoinOperationByCollection {
         if (getLength(secondColl) == 0)
             return new ArrayList<T>(firstColl);
 
-        firstColl.removeAll(secondColl);
-        secondColl.removeAll(firstColl);
+        List<T> result1 = new ArrayList<T>(firstColl);
+        result1.removeAll(secondColl);
+        List<T> result2 = new ArrayList<T>(secondColl);
+        result2.removeAll(firstColl);
 
         List<T> result = new ArrayList<T>();
-        result.addAll(firstColl);
-        result.addAll(secondColl);
+        result.addAll(result1);
+        result.addAll(result2);
+
         return result;
     }
 

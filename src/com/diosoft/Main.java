@@ -11,6 +11,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
 
@@ -68,43 +69,38 @@ public class Main {
         ServiceCollection serviceCollection = (ServiceCollection) ctx.getBean("serviceCollection");
         ServiceArray serviceArray = (ServiceArray) ctx.getBean("serviceArray");
 
-// COLLECTION IMPLEMENTATION
-// LEFT UNION
+
+// LEFT UNION (COLLECTION IMPLEMENTATION)
         System.out.println("\n  >>> LEFT UNION: \n");
-        serviceCollection.leftUnion(firstColl, secondColl);
-
-// MERGE
+        List<Person> list = serviceCollection.leftUnion(firstColl, secondColl);
+// MERGE (COLLECTION IMPLEMENTATION)
         System.out.println("\n  >>> MERGE (without duplicate): \n");
-        serviceCollection.merge(firstColl, secondColl);
+        Set<Person> set = serviceCollection.merge(firstColl, secondColl);
 
-// INNER JOIN
+// INNER JOIN (COLLECTION IMPLEMENTATION)
         System.out.println("  >>> INNER JOIN: \n");
-        serviceCollection.innerJoin(firstColl, secondColl);
-
-// OUTER JOIN
+        Set<Person> set2 = serviceCollection.innerJoin(firstColl, secondColl);
+// OUTER JOIN (COLLECTION IMPLEMENTATION)
         System.out.println("  >>> OUTER JOIN: \n");
-        serviceCollection.outerJoin(firstColl, secondColl);
+        List<Person> list2 = serviceCollection.outerJoin(firstColl, secondColl);
 
-
-// ARRAY IMPLEMENTATION
-// LEFT UNION
+// LEFT UNION (ARRAY IMPLEMENTATION)
         System.out.println("\n  >>> LEFT UNION: \n");
-        serviceArray.leftUnion(firstArray, secondArray);
-
-// MERGE
+        Person[] array = serviceArray.leftUnion(firstArray, secondArray);
+// MERGE (ARRAY IMPLEMENTATION)
         System.out.println("\n  >>> MERGE (without duplicate): \n");
-        serviceArray.merge(firstArray, secondArray);
-
-// INNER JOIN
+        Person[] array2 = serviceArray.merge(firstArray, secondArray);
+// INNER JOIN (ARRAY IMPLEMENTATION)
         System.out.println("  >>> INNER JOIN: \n");
-        serviceArray.innerJoin(firstArray, secondArray);
-
-// OUTER JOIN
+        Person[] array3 = serviceArray.innerJoin(firstArray, secondArray);
+// OUTER JOIN (ARRAY IMPLEMENTATION)
         System.out.println("  >>> OUTER JOIN: \n");
-        serviceArray.outerJoin(firstArray, secondArray);
+        Person[] array4 = serviceArray.outerJoin(firstArray, secondArray);
 
 
-      //  for (int i=0;i<10;i++)
-      //      System.out.println(Arrays.toString(Person[].class.getInterfaces()));
+        System.out.println("BOOLEAN: " +list.containsAll(Arrays.asList(array)));
+        System.out.println("BOOLEAN: " +set.containsAll(Arrays.asList(array2)));
+        System.out.println("BOOLEAN: " +set2.containsAll(Arrays.asList(array3)));
+        System.out.println("BOOLEAN: " +list2.containsAll(Arrays.asList(array4)));
     }
 }

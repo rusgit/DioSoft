@@ -22,13 +22,13 @@ public class ServiceCollection {
     public ServiceCollection() {
     }
 
-    public <T> Set<T> merge(List<T> firstArray, List<T> secondArray) {
+    public <T> Set<T> merge(List<T> firstColl, List<T> secondColl) {
         LOG.info("First Collection: ");
-        LOG.info(firstArray);
+        LOG.info(firstColl);
         LOG.info("Second Collection: ");
-        LOG.info(secondArray);
+        LOG.info(secondColl);
 
-        Set<T> result = joinOperationByCollection.merge(firstArray,secondArray);
+        Set<T> result = joinOperationByCollection.merge(firstColl,secondColl);
 
         LOG.info("Result Collection: ");
         LOG.info(result);
@@ -36,13 +36,13 @@ public class ServiceCollection {
         return result;
     }
 
-    public <T> List<T> leftUnion(List<T> firstArray, List<T> secondArray) {
+    public <T> List<T> leftUnion(List<T> firstColl, List<T> secondColl) {
         LOG.info("First Collection: ");
-        LOG.info(firstArray);
+        LOG.info(firstColl);
         LOG.info("Second Collection: ");
-        LOG.info(secondArray);
+        LOG.info(secondColl);
 
-        List<T> result = joinOperationByCollection.leftUnion(firstArray,secondArray);
+        List<T> result = joinOperationByCollection.leftUnion(firstColl,secondColl);
 
         LOG.info("Result Collection: ");
         LOG.info(result);
@@ -50,13 +50,13 @@ public class ServiceCollection {
         return result;
     }
 
-    public <T> Set<T> innerJoin(List<T> firstArray, List<T> secondArray) {
+    public <T> Set<T> innerJoin(List<T> firstColl, List<T> secondColl) {
         LOG.info("First Collection: ");
-        LOG.info(firstArray);
+        LOG.info(firstColl);
         LOG.info("Second Collection: ");
-        LOG.info(secondArray);
+        LOG.info(secondColl);
 
-        Set<T> result = joinOperationByCollection.innerJoin(firstArray,secondArray);
+        Set<T> result = joinOperationByCollection.innerJoin(firstColl,secondColl);
 
         LOG.info("Result Collection: ");
         LOG.info(result);
@@ -64,13 +64,13 @@ public class ServiceCollection {
         return result;
     }
 
-    public <T> List<T> outerJoin(List<T> firstArray, List<T> secondArray) {
+    public <T> List<T> outerJoin(List<T> firstColl, List<T> secondColl) {
         LOG.info("First Collection: ");
-        LOG.info(firstArray);
+        LOG.info(firstColl);
         LOG.info("Second Collection: ");
-        LOG.info(secondArray);
+        LOG.info(secondColl);
 
-        List<T> result = joinOperationByCollection.outerJoin(firstArray,secondArray);
+        List<T> result = joinOperationByCollection.outerJoin(firstColl,secondColl);
 
         LOG.info("Result Collection: ");
         LOG.info(result);

@@ -27,7 +27,7 @@ public class Person implements Comparable {
     }
     public String getName() {
         return name;
-    } //
+    }
 
     @Override
     public String toString() {
