@@ -22,6 +22,9 @@ public class ArrayHelper implements JoinOperationByArray {
 
         if (secondArrayLenght == 0)
             return deleteDuplicate(firstArray);
+            
+        if (secondArrayLenght == 0)
+            return deleteDuplicate(firstArray);
 
         if (firstArrayLength == 0)
            return deleteDuplicate(secondArray);
