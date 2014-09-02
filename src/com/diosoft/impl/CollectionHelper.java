@@ -1,9 +1,8 @@
 package com.diosoft.impl;
 
-import com.diosoft.domain.Person;
 import com.diosoft.interfaces.JoinOperationByCollection;
+import com.diosoft.util.NaturalComparator;
 import com.diosoft.util.PersonComparator;
-import org.springframework.beans.support.PropertyComparator;
 
 import javax.inject.Named;
 import java.util.*;
@@ -15,75 +14,75 @@ public class CollectionHelper implements JoinOperationByCollection {
     }
 
     @Override
-    public Set<Person> merge(List<Person> firstColl, List<Person> secondColl) {
+    public <T> Set<T> merge(List<T> firstColl, List<T> secondColl) {
 
        if (getLength(firstColl) == 0)
-            return new HashSet<Person>(secondColl);
+            return new HashSet<T>(secondColl);
 
        if (getLength(secondColl) == 0)
-            return new HashSet<Person>(firstColl);
+            return new HashSet<T>(firstColl);
 
-       Set<Person> result = new HashSet<Person>(firstColl);
+       Set<T> result = new TreeSet<>(firstColl);
        result.addAll(secondColl);
        return result;
     }
 
     @Override
-    public List<Person> leftUnion(List<Person> firstColl, List<Person> secondColl) {
+    public <T> List<T> leftUnion(List<T> firstColl, List<T> secondColl) {
 
         if (getLength(firstColl) == 0)
-            return new ArrayList<Person>();
+            return new ArrayList<T>();
 
         if (getLength(secondColl) == 0)
-            return new ArrayList<Person>(firstColl);
+            return new ArrayList<T>(firstColl);
 
-        List<Person> result = new ArrayList<Person>(firstColl);
-        Collections.sort(result,new PersonComparator());
-        for (Person person : secondColl) {
-            int p = Collections.binarySearch(result,person);
+        List<T> result = new ArrayList<>(firstColl);
+        Collections.sort(result, new NaturalComparator());
+        for (T obj : secondColl) {
+            int p = Collections.binarySearch(result,obj,new NaturalComparator());
             if (p>=0) {
-                result.add(person);
+                result.add(obj);
             }
         }
         return result;
     }
 
     @Override
-    public Set<Person> innerJoin(List<Person> firstColl, List<Person> secondColl) {
+    public <T> Set<T> innerJoin(List<T> firstColl, List<T> secondColl) {
 
         if (getLength(firstColl) == 0)
-            return new HashSet<Person>();
+            return new HashSet<T>();
 
         if (getLength(secondColl) == 0)
-            return new HashSet<Person>();
+            return new HashSet<T>();
 
-        Set<Person> result = new HashSet<Person>(firstColl);
+        Set<T> result = new TreeSet<>(firstColl);
         result.retainAll(secondColl);
         return result;
     }
 
     @Override
-    public List<Person> outerJoin(List<Person> firstColl, List<Person> secondColl) {
+    public <T> List<T> outerJoin(List<T> firstColl, List<T> secondColl) {
 
         if (getLength(firstColl) == 0)
-            return new ArrayList<Person>(secondColl);
+            return new ArrayList<T>(secondColl);
 
         if (getLength(secondColl) == 0)
-            return new ArrayList<Person>(firstColl);
+            return new ArrayList<T>(firstColl);
 
-        List<Person> result1 = new ArrayList<Person>(firstColl);
+        List<T> result1 = new ArrayList<>(firstColl);
         result1.removeAll(secondColl);
-        List<Person> result2 = new ArrayList<Person>(secondColl);
+        List<T> result2 = new ArrayList<>(secondColl);
         result2.removeAll(firstColl);
 
-        List<Person> result = new ArrayList<Person>();
+        List<T> result = new ArrayList<>();
         result.addAll(result1);
         result.addAll(result2);
 
         return result;
     }
 
-    private int getLength(Collection<Person> coll) {
+    private <T> int getLength(Collection<T> coll) {
         return coll != null ? coll.size() : 0;
     }
 }

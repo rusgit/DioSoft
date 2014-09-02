@@ -1,18 +1,14 @@
 package com.diosoft;
 
 import com.diosoft.domain.Person;
-import com.diosoft.impl.ArrayHelper;
 import com.diosoft.service.ServiceArray;
 import com.diosoft.service.ServiceCollection;
+import com.diosoft.util.NaturalComparator;
 import com.diosoft.util.PersonComparator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
 
@@ -38,8 +34,8 @@ public class Main {
         Person[] firstArray = {person5, person1, person1, person6, person3, person4, person2};
         Person[] secondArray = {person3_dupl, person8, person7, person9, person9_dupl, person1_dupl, person6_dupl, person10};
 // Collections initialization
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
 
 // Equals and '==' POJO instance
         System.out.println("  >>> Equals and '==' POJO instance:\n");
@@ -70,43 +66,35 @@ public class Main {
         System.out.println("\n   Compare First array and Second array: " + Arrays.equals(firstArray, secondArray));
 
 
-
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/app-context.xml");
         ServiceCollection serviceCollection = (ServiceCollection) ctx.getBean("serviceCollection");
         ServiceArray serviceArray = (ServiceArray) ctx.getBean("serviceArray");
 
-
 // LEFT UNION (COLLECTION IMPLEMENTATION)
         System.out.println("\n  >>> LEFT UNION: \n");
-        List<Person> list = serviceCollection.leftUnion(firstColl, secondColl);
+        serviceCollection.leftUnion(firstColl, secondColl);
 // MERGE (COLLECTION IMPLEMENTATION)
         System.out.println("\n  >>> MERGE (without duplicate): \n");
-        Set<Person> set = serviceCollection.merge(firstColl, secondColl);
+        serviceCollection.merge(firstColl, secondColl);
 
 // INNER JOIN (COLLECTION IMPLEMENTATION)
         System.out.println("  >>> INNER JOIN: \n");
-        Set<Person> set2 = serviceCollection.innerJoin(firstColl, secondColl);
+        serviceCollection.innerJoin(firstColl, secondColl);
 // OUTER JOIN (COLLECTION IMPLEMENTATION)
         System.out.println("  >>> OUTER JOIN: \n");
-        List<Person> list2 = serviceCollection.outerJoin(firstColl, secondColl);
+        serviceCollection.outerJoin(firstColl, secondColl);
 
 // LEFT UNION (ARRAY IMPLEMENTATION)
         System.out.println("\n  >>> LEFT UNION: \n");
-        Person[] array = serviceArray.leftUnion(firstArray, secondArray);
+        serviceArray.leftUnion(firstArray, secondArray);
 // MERGE (ARRAY IMPLEMENTATION)
         System.out.println("\n  >>> MERGE (without duplicate): \n");
-        Person[] array2 = serviceArray.merge(firstArray, secondArray);
+        serviceArray.merge(firstArray, secondArray);
 // INNER JOIN (ARRAY IMPLEMENTATION)
         System.out.println("  >>> INNER JOIN: \n");
-        Person[] array3 = serviceArray.innerJoin(firstArray, secondArray);
+        serviceArray.innerJoin(firstArray, secondArray);
 // OUTER JOIN (ARRAY IMPLEMENTATION)
         System.out.println("  >>> OUTER JOIN: \n");
-        Person[] array4 = serviceArray.outerJoin(firstArray, secondArray);
-
-
-        System.out.println("BOOLEAN: " +list.containsAll(Arrays.asList(array)));
-        System.out.println("BOOLEAN: " +set.containsAll(Arrays.asList(array2)));
-        System.out.println("BOOLEAN: " +set2.containsAll(Arrays.asList(array3)));
-        System.out.println("BOOLEAN: " +list2.containsAll(Arrays.asList(array4)));
-    }
+        serviceArray.outerJoin(firstArray, secondArray);
+   }
 }

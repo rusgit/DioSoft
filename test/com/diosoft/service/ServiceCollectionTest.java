@@ -2,12 +2,11 @@ package com.diosoft.service;
 
 import com.diosoft.domain.Person;
 import com.diosoft.impl.CollectionHelper;
-import com.diosoft.service.ServiceCollection;
+import com.diosoft.util.PersonComparator;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
+
 import static org.junit.Assert.assertTrue;
 
 
@@ -34,17 +33,20 @@ public class ServiceCollectionTest {
 
         Person[] firstArray = {person1, person4, person3, person5};
         Person[] secondArray = {person1, person2, person3, person6, person7, person4};
-        Person[] expectedArray = {person1, person4, person3, person5, person1, person4, person3};
+        Person[] expectedArray = {person1, person3, person4, person5, person1, person4, person3};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        Collections.sort(expectedColl, new PersonComparator());
+        Collections.sort(actualColl, new PersonComparator());
+
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -55,14 +57,17 @@ public class ServiceCollectionTest {
         Person[] expectedArray = {};
 
         List<Person> firstColl = null;
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        Collections.sort(expectedColl, new PersonComparator());
+        Collections.sort(actualColl, new PersonComparator());
+
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -72,15 +77,18 @@ public class ServiceCollectionTest {
         Person[] firstArray = {person1, person3, person2};
         Person[] expectedArray = {person1, person3, person2};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
         List<Person> secondColl = null;
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        Collections.sort(expectedColl, new PersonComparator());
+        Collections.sort(actualColl, new PersonComparator());
+
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -91,15 +99,18 @@ public class ServiceCollectionTest {
         Person[] secondArray = {person1, person3, person2, person10};
         Person[] expectedArray = {};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        Collections.sort(expectedColl, new PersonComparator());
+        Collections.sort(actualColl, new PersonComparator());
+
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -110,14 +121,18 @@ public class ServiceCollectionTest {
         Person[] secondArray = {};
         Person[] expectedArray = {person1, person3, person2, person10};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
-        List<Person> actualColl = ch.leftUnion(firstColl,secondColl);
+        ServiceCollection sc = new ServiceCollection(ch);
+        List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        Collections.sort(expectedColl, new PersonComparator());
+        Collections.sort(actualColl, new PersonComparator());
+
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -128,15 +143,18 @@ public class ServiceCollectionTest {
         Person[] secondArray = {person10, person3, person2, person1, person3_dupl};
         Person[] expectedArray = {person1, person3, person2, person1_dupl, person3_dupl, person3, person2, person1, person3_dupl};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         List<Person> actualColl = sc.leftUnion(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        Collections.sort(expectedColl, new PersonComparator());
+        Collections.sort(actualColl, new PersonComparator());
+
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -147,15 +165,15 @@ public class ServiceCollectionTest {
         Person[] secondArray = {person1, person2, person3, person6, person7, person4};
         Person[] expectedArray = {person1, person2, person3, person4, person5, person6, person7};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         Set<Person> actualColl = sc.merge(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -165,15 +183,15 @@ public class ServiceCollectionTest {
         Person[] firstArray = {person1, person3, person2};
         Person[] expectedArray = {person1, person3, person2};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
         List<Person> secondColl = null;
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         Set<Person> actualColl = sc.merge(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -184,15 +202,15 @@ public class ServiceCollectionTest {
         Person[] secondArray = {};
         Person[] expectedArray = {person1, person3, person2, person10};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         Set<Person> actualColl = sc.merge(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -203,15 +221,15 @@ public class ServiceCollectionTest {
         Person[] secondArray = {person10, person3, person2, person1, person3_dupl};
         Person[] expectedArray = {person1, person3, person2, person10};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         Set<Person> actualColl = sc.merge(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -222,15 +240,15 @@ public class ServiceCollectionTest {
         Person[] secondArray = {person10, person4, person1, person4, person7};
         Person[] expectedArray = {person1, person10};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         Set<Person> actualColl = sc.innerJoin(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -240,15 +258,15 @@ public class ServiceCollectionTest {
         Person[] firstArray = {person1, person3, person2};
         Person[] expectedArray = {};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
         List<Person> secondColl = null;
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         Set<Person> actualColl = sc.innerJoin(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -259,15 +277,15 @@ public class ServiceCollectionTest {
         Person[] secondArray = {};
         Person[] expectedArray = {};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         Set<Person> actualColl = sc.innerJoin(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -278,15 +296,15 @@ public class ServiceCollectionTest {
         Person[] secondArray = {person1, person3, person6 ,person6_dupl,};
         Person[] expectedArray = {person1, person3};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         Set<Person> actualColl = sc.innerJoin(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -297,15 +315,18 @@ public class ServiceCollectionTest {
         Person[] secondArray = {person2, person4, person7};
         Person[] expectedArray = {person5, person1, person6, person3, person4};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         List<Person> actualColl = sc.outerJoin(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        Collections.sort(expectedColl, new PersonComparator());
+        Collections.sort(actualColl, new PersonComparator());
+
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -315,15 +336,18 @@ public class ServiceCollectionTest {
         Person[] firstArray = {person1, person3, person2};
         Person[] expectedArray = {person1, person3, person2};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
         List<Person> secondColl = null;
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         List<Person> actualColl = sc.outerJoin(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        Collections.sort(expectedColl, new PersonComparator());
+        Collections.sort(actualColl, new PersonComparator());
+
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -334,15 +358,18 @@ public class ServiceCollectionTest {
         Person[] secondArray = {};
         Person[] expectedArray = {person1, person3, person2};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         List<Person> actualColl = sc.outerJoin(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        Collections.sort(expectedColl, new PersonComparator());
+        Collections.sort(actualColl, new PersonComparator());
+
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 
@@ -353,15 +380,18 @@ public class ServiceCollectionTest {
         Person[] secondArray = {person3, person2, person3_dupl};
         Person[] expectedArray = {person1, person1_dupl};
 
-        List<Person> firstColl = new ArrayList<Person>(Arrays.asList(firstArray));
-        List<Person> secondColl = new ArrayList<Person>(Arrays.asList(secondArray));
-        List<Person> expectedColl = new ArrayList<Person>(Arrays.asList(expectedArray));
+        List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
+        List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
+        List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
         CollectionHelper ch = new CollectionHelper();
         ServiceCollection sc = new ServiceCollection(ch);
         List<Person> actualColl = sc.outerJoin(firstColl,secondColl);
 
-        boolean result = actualColl.containsAll(expectedColl);
+        Collections.sort(expectedColl, new PersonComparator());
+        Collections.sort(actualColl, new PersonComparator());
+
+        boolean result = expectedColl.equals(actualColl);
         assertTrue(result);
     }
 }

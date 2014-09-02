@@ -63,7 +63,6 @@ public class Person implements Comparable<Person> {
         return result;
     }
 
-    //local code review (vtegza): try with Comporator @ 31.08.14
     @Override
     public int compareTo(Person obj) {
         if (obj == null) return 1;
@@ -78,7 +77,6 @@ public class Person implements Comparable<Person> {
 
         return (result != 0) ? (int) (result / Math.abs(result)) : 0;
     }
-
 
     public static class Builder {
         private String name;
