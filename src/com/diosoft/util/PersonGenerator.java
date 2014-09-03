@@ -9,16 +9,16 @@ import java.util.Random;
 
 public class PersonGenerator implements ArrayGenerator {
 
-    private Person person1 = new Person.Builder().name("Ruslan").lastName("Borisov").age(25).post(Person.Post.DEVELOPER).build();
-    private Person person2 = new Person.Builder().name("Anton").lastName("Zemlyankin").age(22).post(Person.Post.DEVELOPER).build();
-    private Person person3 = new Person.Builder().name("Ekaterina").lastName("Volkova").age(28).post(Person.Post.DEVELOPER).build();
-    private Person person4 = new Person.Builder().name("Illya").lastName("Pinchuk").age(20).post(Person.Post.QA).build();
-    private Person person5 = new Person.Builder().name("Elena").lastName("Kirichenko").age(30).post(Person.Post.QA).build();
-    private Person person6 = new Person.Builder().name("Vladimir").lastName("Kudyna").age(35).post(Person.Post.QA).build();
-    private Person person7 = new Person.Builder().name("Vitaliy").lastName("Bondar").age(31).post(Person.Post.QA).build();
-    private Person person8 = new Person.Builder().name("Violete").lastName("Egorova").age(40).post(Person.Post.DIRECTOR).build();
-    private Person person9 = new Person.Builder().name("Svyatoslav").lastName("Drobich").age(45).post(Person.Post.DIRECTOR).build();
-    private Person person10 = new Person.Builder().name("Svetlana").lastName("Mirnaya").age(50).post(Person.Post.DIRECTOR).build();
+    private Person person1 = new Person.Builder().id(1).name("Ruslan").lastName("Borisov").age(25).post(Person.Post.DEVELOPER).build();
+    private Person person2 = new Person.Builder().id(2).name("Anton").lastName("Zemlyankin").age(22).post(Person.Post.DEVELOPER).build();
+    private Person person3 = new Person.Builder().id(3).name("Ekaterina").lastName("Volkova").age(28).post(Person.Post.DEVELOPER).build();
+    private Person person4 = new Person.Builder().id(4).name("Illya").lastName("Pinchuk").age(20).post(Person.Post.QA).build();
+    private Person person5 = new Person.Builder().id(5).name("Elena").lastName("Kirichenko").age(30).post(Person.Post.QA).build();
+    private Person person6 = new Person.Builder().id(6).name("Vladimir").lastName("Kudyna").age(35).post(Person.Post.QA).build();
+    private Person person7 = new Person.Builder().id(7).name("Vitaliy").lastName("Bondar").age(31).post(Person.Post.QA).build();
+    private Person person8 = new Person.Builder().id(8).name("Violete").lastName("Egorova").age(40).post(Person.Post.DIRECTOR).build();
+    private Person person9 = new Person.Builder().id(9).name("Svyatoslav").lastName("Drobich").age(45).post(Person.Post.DIRECTOR).build();
+    private Person person10 = new Person.Builder().id(10).name("Svetlana").lastName("Mirnaya").age(50).post(Person.Post.DIRECTOR).build();
 
     public Map<String,Person[]> createArrays(int sizeFirstArray, int sizeSecondArray){
 
@@ -106,6 +106,4 @@ public class PersonGenerator implements ArrayGenerator {
         }
         return false;
     }
-
-
 }

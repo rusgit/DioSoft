@@ -1,19 +1,32 @@
 package com.diosoft.domain;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Person implements Comparable<Person> {
 
-    //local code review (vtegza): if you prefer inner class - put it in the bottom of file/class @ 31.08.14
-    // (rusgit): corrected
+    @XmlAttribute
+    private final long id;
     private final String name;
     private final String lastName;
     private final int age;
     private final Post post;
 
     private Person(Builder builder) {
+        this.id = builder.id;
         this.name = builder.name;
         this.lastName = builder.lastName;
         this.age = builder.age;
         this.post = builder.post;
+    }
+
+    public Person(){
+        this.id = 0;
+        this.name = "";
+        this.lastName = "";
+        this.age = 0;
+        this.post = null;
     }
 
     public Post getPost() {
@@ -32,7 +45,7 @@ public class Person implements Comparable<Person> {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Person { ");
-        sb.append(name).append(", ").append(lastName).append(", ")
+        sb.append(id).append(", ").append(name).append(", ").append(lastName).append(", ")
                 .append(post.toString()).append(", ").append(age).append(" } \n");
 
         return sb.toString();
@@ -79,6 +92,7 @@ public class Person implements Comparable<Person> {
     }
 
     public static class Builder {
+        private long id;
         private String name;
         private String lastName;
         private int age;
@@ -87,10 +101,16 @@ public class Person implements Comparable<Person> {
         public Builder() {}
 
         public Builder(Person original) {
+            this.id = original.id;
             this.name = original.name;
             this.lastName = original.lastName;
             this.age = original.age;
             this.post = original.post;
+        }
+
+        public Builder id(long id) {
+            this.id = id;
+            return this;
         }
 
         public Builder name(String name) {

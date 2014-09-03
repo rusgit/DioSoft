@@ -4,21 +4,22 @@ import com.diosoft.domain.Person;
 import com.diosoft.interfaces.ArrayGenerator;
 import com.diosoft.service.ArrayService;
 import com.diosoft.service.CollectionService;
-import com.diosoft.util.PersonComparator;
+import com.diosoft.util.JAXBXMLHandler;
 import com.diosoft.util.PersonGenerator;
-import com.diosoft.util.ServiceFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import java.io.*;
+import javax.xml.bind.*;
 
 import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JAXBException, IOException {
 
 // Generator initialization
         ArrayGenerator arrayGenerator = new PersonGenerator();
-        Map<String,Person[]> map = arrayGenerator.createArrays(8,6);
+        Map<String,Person[]> map = arrayGenerator.createArrays(8, 6);
 
 // Arrays initialization
         Person[] firstArray = map.get("firstArray");
@@ -37,32 +38,18 @@ public class Main {
 //        CollectionService collectionService =  ServiceFactory.CollectionServiceFactory.create();
 //        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
 
-
-// LEFT UNION (COLLECTION IMPLEMENTATION)
-        System.out.println("\n  >>> LEFT UNION: \n");
+// COLLECTION IMPLEMENTATION
+        serviceCollection.jaxbInputData(firstColl,secondColl);
         serviceCollection.leftUnion(firstColl, secondColl);
-// MERGE (COLLECTION IMPLEMENTATION)
-        System.out.println("\n  >>> MERGE (without duplicate): \n");
         serviceCollection.merge(firstColl, secondColl);
-
-// INNER JOIN (COLLECTION IMPLEMENTATION)
-        System.out.println("  >>> INNER JOIN: \n");
         serviceCollection.innerJoin(firstColl, secondColl);
-// OUTER JOIN (COLLECTION IMPLEMENTATION)
-        System.out.println("  >>> OUTER JOIN: \n");
         serviceCollection.outerJoin(firstColl, secondColl);
 
-// LEFT UNION (ARRAY IMPLEMENTATION)
-        System.out.println("\n  >>> LEFT UNION: \n");
-        serviceArray.leftUnion(firstArray, secondArray);
-// MERGE (ARRAY IMPLEMENTATION)
-        System.out.println("\n  >>> MERGE (without duplicate): \n");
-        serviceArray.merge(firstArray, secondArray);
-// INNER JOIN (ARRAY IMPLEMENTATION)
-        System.out.println("  >>> INNER JOIN: \n");
-        serviceArray.innerJoin(firstArray, secondArray);
-// OUTER JOIN (ARRAY IMPLEMENTATION)
-        System.out.println("  >>> OUTER JOIN: \n");
-        serviceArray.outerJoin(firstArray, secondArray);
+// ARRAY IMPLEMENTATION
+//        serviceArray.leftUnion(firstArray, secondArray);
+//        serviceArray.merge(firstArray, secondArray);
+//        serviceArray.innerJoin(firstArray, secondArray);
+//        serviceArray.outerJoin(firstArray, secondArray);
+
    }
 }
