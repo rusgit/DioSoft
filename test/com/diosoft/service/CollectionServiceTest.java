@@ -11,7 +11,7 @@ import java.util.*;
 import static org.junit.Assert.assertTrue;
 
 
-public class ServiceCollectionTest {
+public class CollectionServiceTest {
 
     private Person person1 = new Person.Builder().name("Ruslan").lastName("Borisov").age(25).post(Person.Post.DEVELOPER).build();
     private Person person2 = new Person.Builder().name("Anton").lastName("Zemlyankin").age(22).post(Person.Post.DEVELOPER).build();

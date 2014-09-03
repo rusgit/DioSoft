@@ -1,7 +1,6 @@
 package com.diosoft.util;
 
 import com.diosoft.domain.Person;
-import com.diosoft.util.PersonComparator;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 

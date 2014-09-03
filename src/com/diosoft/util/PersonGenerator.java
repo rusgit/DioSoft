@@ -1,11 +1,13 @@
 package com.diosoft.util;
 
 import com.diosoft.domain.Person;
+import com.diosoft.interfaces.ArrayGenerator;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class PersonGenerator {
+public class PersonGenerator implements ArrayGenerator {
 
     private Person person1 = new Person.Builder().name("Ruslan").lastName("Borisov").age(25).post(Person.Post.DEVELOPER).build();
     private Person person2 = new Person.Builder().name("Anton").lastName("Zemlyankin").age(22).post(Person.Post.DEVELOPER).build();
@@ -18,7 +20,7 @@ public class PersonGenerator {
     private Person person9 = new Person.Builder().name("Svyatoslav").lastName("Drobich").age(45).post(Person.Post.DIRECTOR).build();
     private Person person10 = new Person.Builder().name("Svetlana").lastName("Mirnaya").age(50).post(Person.Post.DIRECTOR).build();
 
-    public Map<String,Person[]> createArraysWithOutDupl(int sizeFirstArray, int sizeSecondArray){
+    public Map<String,Person[]> createArrays(int sizeFirstArray, int sizeSecondArray){
 
         if(sizeFirstArray<1 || sizeSecondArray<1) throw new IllegalArgumentException();
         if(sizeFirstArray>10) sizeFirstArray=10;

@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import static org.junit.Assert.assertArrayEquals;
 
-public class ServiceArrayTest {
+public class ArrayServiceTest {
     //local code review (vtegza): no need to be final @ 31.08.14
     // (rusgit): corrected
     private Person person1 = new Person.Builder().name("Ruslan").lastName("Borisov").age(25).post(Person.Post.DEVELOPER).build();

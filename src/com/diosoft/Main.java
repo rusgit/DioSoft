@@ -1,6 +1,7 @@
 package com.diosoft;
 
 import com.diosoft.domain.Person;
+import com.diosoft.interfaces.ArrayGenerator;
 import com.diosoft.service.ArrayService;
 import com.diosoft.service.CollectionService;
 import com.diosoft.util.PersonComparator;
@@ -16,8 +17,8 @@ public class Main {
     public static void main(String[] args) {
 
 // Generator initialization
-        PersonGenerator pc = new PersonGenerator();
-        Map<String,Person[]> map = pc.createArraysWithOutDupl(1,1);
+        ArrayGenerator arrayGenerator = new PersonGenerator();
+        Map<String,Person[]> map = arrayGenerator.createArrays(8,6);
 
 // Arrays initialization
         Person[] firstArray = map.get("firstArray");
@@ -63,14 +64,5 @@ public class Main {
 // OUTER JOIN (ARRAY IMPLEMENTATION)
         System.out.println("  >>> OUTER JOIN: \n");
         serviceArray.outerJoin(firstArray, secondArray);
-
-
-        System.out.println("\n  >>> TEST GENERATOR \n");
-        Map<String,Person[]> maps = pc.createArraysWithDupl(5, 5, 5, 5);
-        Person[] firstArrays = maps.get("firstArray");
-        Person[] secondArrays = maps.get("secondArray");
-        System.out.println(Arrays.toString(firstArrays));
-        System.out.println(Arrays.toString(secondArrays));
-
    }
 }
