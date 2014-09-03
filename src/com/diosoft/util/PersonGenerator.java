@@ -1,7 +1,6 @@
 package com.diosoft.util;
 
 import com.diosoft.domain.Person;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -20,6 +19,10 @@ public class PersonGenerator {
     private Person person10 = new Person.Builder().name("Svetlana").lastName("Mirnaya").age(50).post(Person.Post.DIRECTOR).build();
 
     public Map<String,Person[]> createArraysWithOutDupl(int sizeFirstArray, int sizeSecondArray){
+
+        if(sizeFirstArray<1 || sizeSecondArray<1) throw new IllegalArgumentException();
+        if(sizeFirstArray>10) sizeFirstArray=10;
+        if(sizeSecondArray>10) sizeSecondArray=10;
 
         Person[] standartArray = {person1,person2,person3,person4,person5,person6,person7,person8,person9,person10};
         Person[] firstArray = new Person[sizeFirstArray];
@@ -50,6 +53,14 @@ public class PersonGenerator {
     }
 
     public Map<String,Person[]> createArraysWithDupl(int sizeFirstArray, int sizeSecondArray, int countDuplInFirstArr, int countDuplInSecondArr){
+
+        if(countDuplInFirstArr<1 || countDuplInSecondArr<1 || sizeFirstArray<1 || sizeSecondArray<1) throw new IllegalArgumentException();
+        if(sizeFirstArray>10) sizeFirstArray=10;
+        if(sizeSecondArray>10) sizeSecondArray=10;
+        if(countDuplInFirstArr>10) countDuplInFirstArr=9;
+        if(countDuplInSecondArr>10) countDuplInSecondArr=9;
+        if(sizeFirstArray==countDuplInFirstArr) countDuplInFirstArr--;
+        if(sizeSecondArray==countDuplInSecondArr) countDuplInSecondArr--;
 
         Person[] standartArray = {person1,person2,person3,person4,person5,person6,person7,person8,person9,person10};
         Person[] firstArray = new Person[sizeFirstArray];

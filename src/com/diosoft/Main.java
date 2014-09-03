@@ -17,7 +17,7 @@ public class Main {
 
 // Generator initialization
         PersonGenerator pc = new PersonGenerator();
-        Map<String,Person[]> map = pc.createArraysWithOutDupl(5,5);
+        Map<String,Person[]> map = pc.createArraysWithOutDupl(1,1);
 
 // Arrays initialization
         Person[] firstArray = map.get("firstArray");
@@ -65,16 +65,12 @@ public class Main {
         serviceArray.outerJoin(firstArray, secondArray);
 
 
-
-        Map<String,Person[]> mapDupl = pc.createArraysWithDupl(10,10,3,3);
-
-        System.out.println(" \n \n  >>> TEST GENERATOR UNIQ \n");
-        System.out.println(Arrays.toString(map.get("firstArray")));
-        System.out.println(Arrays.toString(map.get("secondArray")));
-
-        System.out.println(" \n \n  >>> TEST GENERATOR DUPL \n");
-        System.out.println(Arrays.toString(mapDupl.get("firstArray")));
-        System.out.println(Arrays.toString(mapDupl.get("secondArray")));
+        System.out.println("\n  >>> TEST GENERATOR \n");
+        Map<String,Person[]> maps = pc.createArraysWithDupl(5, 5, 5, 5);
+        Person[] firstArrays = maps.get("firstArray");
+        Person[] secondArrays = maps.get("secondArray");
+        System.out.println(Arrays.toString(firstArrays));
+        System.out.println(Arrays.toString(secondArrays));
 
    }
 }
