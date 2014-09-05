@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <persons>
-    <person id="3">
+    <person id="0">
+        <name>Elena</name>
+        <lastName>Kirichenko</lastName>
+        <age>30</age>
+        <post>QA</post>
+    </person>
+    <person id="0">
+        <name>Ruslan</name>
+        <lastName>Borisov</lastName>
+        <age>25</age>
+        <post>DEVELOPER</post>
+    </person>
+    <person id="0">
+        <name>Vladimir</name>
+        <lastName>Kudyna</lastName>
+        <age>35</age>
+        <post>QA</post>
+    </person>
+    <person id="0">
         <name>Ekaterina</name>
         <lastName>Volkova</lastName>
         <age>28</age>
         <post>DEVELOPER</post>
     </person>
-    <person id="7">
-        <name>Vitaliy</name>
-        <lastName>Bondar</lastName>
-        <age>31</age>
+    <person id="0">
+        <name>Illya</name>
+        <lastName>Pinchuk</lastName>
+        <age>20</age>
         <post>QA</post>
     </person>
 </persons>
