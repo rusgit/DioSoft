@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persons>
+    <person id="11">
+        <name>Ekaterina</name>
+        <lastName>Kudyna</lastName>
+        <age>25</age>
+        <post>DEVELOPER</post>
+    </person>
+    <person id="12">
+        <name>Elena</name>
+        <lastName>Kudyna</lastName>
+        <age>22</age>
+        <post>DEVELOPER</post>
+    </person>
+    <person id="14">
+        <name>Vladimir</name>
+        <lastName>Borisov</lastName>
+        <age>20</age>
+        <post>QA</post>
+    </person>
+    <person id="15">
+        <name>Svyatoslav</name>
+        <lastName>Borisov</lastName>
+        <age>30</age>
+        <post>QA</post>
+    </person>
+</persons>

@@ -1,4 +1,4 @@
-package com.diosoft.domain;
+package com.diosoft.common;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

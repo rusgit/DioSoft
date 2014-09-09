@@ -1,15 +1,12 @@
 package com.diosoft.util;
 
-import com.diosoft.domain.Person;
-import com.diosoft.interfaces.ArrayGenerator;
+import com.diosoft.common.Person;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.util.Arrays;
 import java.util.Map;
-import java.util.Random;
 
-public class PersonGeneratorTest {
+public class PersonGeneratorImplTest {
 
     @Test
     public void testCreateArrays_Size() {
@@ -19,8 +16,8 @@ public class PersonGeneratorTest {
         int expectedFirstSize = 5;
         int expectedSecondSize = 3;
 
-        ArrayGenerator ag = new PersonGenerator();
-        Map<String,Person[]> map = ag.createArrays(sizeFirstArray, sizeSecondArray);
+        PersonGenerator ps = new PersonGeneratorImpl();
+        Map<String,Person[]> map = ps.createArrays(sizeFirstArray, sizeSecondArray);
         Person[] firstArray = map.get("firstArray");
         Person[] secondArray = map.get("secondArray");
 
@@ -41,8 +38,8 @@ public class PersonGeneratorTest {
         int sizeFirstArray = 5;
         int sizeSecondArray = 3;
 
-        ArrayGenerator ag = new PersonGenerator();
-        Map<String,Person[]> map = ag.createArrays(sizeFirstArray, sizeSecondArray);
+        PersonGenerator pg = new PersonGeneratorImpl();
+        Map<String,Person[]> map = pg.createArrays(sizeFirstArray, sizeSecondArray);
         Person[] firstArray = map.get("firstArray");
         Person[] secondArray = map.get("secondArray");
 
@@ -72,8 +69,8 @@ public class PersonGeneratorTest {
         int sizeFirstArray = -3;
         int sizeSecondArray = 3;
 
-        ArrayGenerator ag = new PersonGenerator();
-        Map<String,Person[]> map = ag.createArrays(sizeFirstArray, sizeSecondArray);
+        PersonGenerator pg = new PersonGeneratorImpl();
+        Map<String,Person[]> map = pg.createArrays(sizeFirstArray, sizeSecondArray);
     }
 
     @Test
@@ -84,8 +81,8 @@ public class PersonGeneratorTest {
         int expectedFirstSize = 10;
         int expectedSecondSize = 10;
 
-        ArrayGenerator ag = new PersonGenerator();
-        Map<String,Person[]> map = ag.createArrays(sizeFirstArray, sizeSecondArray);
+        PersonGenerator pg = new PersonGeneratorImpl();
+        Map<String,Person[]> map = pg.createArrays(sizeFirstArray, sizeSecondArray);
         Person[] firstArray = map.get("firstArray");
         Person[] secondArray = map.get("secondArray");
 

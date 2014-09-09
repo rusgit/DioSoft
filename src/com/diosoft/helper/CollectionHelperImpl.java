@@ -1,16 +1,14 @@
-package com.diosoft.impl;
+package com.diosoft.helper;
 
-import com.diosoft.domain.Person;
-import com.diosoft.interfaces.JoinOperationByCollection;
+import com.diosoft.common.Person;
 import com.diosoft.util.PersonComparator;
-
 import javax.inject.Named;
 import java.util.*;
 
-@Named("collectionHelper")
-public class CollectionHelper implements JoinOperationByCollection {
+@Named("collectionHelperImpl")
+public class CollectionHelperImpl implements CollectionHelper {
 
-    public CollectionHelper(){
+    public CollectionHelperImpl(){
     }
 
     @Override

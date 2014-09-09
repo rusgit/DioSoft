@@ -1,109 +1,15 @@
 package com.diosoft.util;
 
-import com.diosoft.domain.Person;
-import com.diosoft.interfaces.ArrayGenerator;
-
-import java.util.HashMap;
+import com.diosoft.common.Person;
+import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
-public class PersonGenerator implements ArrayGenerator {
+public interface PersonGenerator {
 
-    private Person person1 = new Person.Builder().id(1).name("Ruslan").lastName("Borisov").age(25).post(Person.Post.DEVELOPER).build();
-    private Person person2 = new Person.Builder().id(2).name("Anton").lastName("Zemlyankin").age(22).post(Person.Post.DEVELOPER).build();
-    private Person person3 = new Person.Builder().id(3).name("Ekaterina").lastName("Volkova").age(28).post(Person.Post.DEVELOPER).build();
-    private Person person4 = new Person.Builder().id(4).name("Illya").lastName("Pinchuk").age(20).post(Person.Post.QA).build();
-    private Person person5 = new Person.Builder().id(5).name("Elena").lastName("Kirichenko").age(30).post(Person.Post.QA).build();
-    private Person person6 = new Person.Builder().id(6).name("Vladimir").lastName("Kudyna").age(35).post(Person.Post.QA).build();
-    private Person person7 = new Person.Builder().id(7).name("Vitaliy").lastName("Bondar").age(31).post(Person.Post.QA).build();
-    private Person person8 = new Person.Builder().id(8).name("Violete").lastName("Egorova").age(40).post(Person.Post.DIRECTOR).build();
-    private Person person9 = new Person.Builder().id(9).name("Svyatoslav").lastName("Drobich").age(45).post(Person.Post.DIRECTOR).build();
-    private Person person10 = new Person.Builder().id(10).name("Svetlana").lastName("Mirnaya").age(50).post(Person.Post.DIRECTOR).build();
+    Map<String,Person[]> createArrays(int sizeFirstArray, int sizeSecondArray);
 
-    public Map<String,Person[]> createArrays(int sizeFirstArray, int sizeSecondArray){
+    List<Person>[] createSameSurnameMore2array(int numberArrays);
 
-        if(sizeFirstArray<1 || sizeSecondArray<1) throw new IllegalArgumentException();
-        if(sizeFirstArray>10) sizeFirstArray=10;
-        if(sizeSecondArray>10) sizeSecondArray=10;
+    Map<String,Person[]> createArraysWithDupl(int sizeFirstArray, int sizeSecondArray, int countDuplInFirstArr, int countDuplInSecondArr);
 
-        Person[] standartArray = {person1,person2,person3,person4,person5,person6,person7,person8,person9,person10};
-        Person[] firstArray = new Person[sizeFirstArray];
-        Person[] secondArray = new Person[sizeSecondArray];
-
-        Random rnd = new Random();
-        for (int i=0; i < sizeFirstArray; ) {
-            int j = rnd.nextInt(10);
-            if (!includes(firstArray,standartArray[j])) {
-                firstArray[i] = standartArray[j];
-                i++;
-            }
-        }
-
-        for (int i=0; i < sizeSecondArray; ) {
-            int j = rnd.nextInt(10);
-            if (!includes(secondArray,standartArray[j])) {
-                secondArray[i] = standartArray[j];
-                i++;
-            }
-        }
-
-        Map<String,Person[]> arrays = new HashMap<>();
-        arrays.put("firstArray", firstArray);
-        arrays.put("secondArray", secondArray);
-
-        return arrays;
-    }
-
-    public Map<String,Person[]> createArraysWithDupl(int sizeFirstArray, int sizeSecondArray, int countDuplInFirstArr, int countDuplInSecondArr){
-
-        if(countDuplInFirstArr<1 || countDuplInSecondArr<1 || sizeFirstArray<1 || sizeSecondArray<1) throw new IllegalArgumentException();
-        if(sizeFirstArray>10) sizeFirstArray=10;
-        if(sizeSecondArray>10) sizeSecondArray=10;
-        if(countDuplInFirstArr>10) countDuplInFirstArr=9;
-        if(countDuplInSecondArr>10) countDuplInSecondArr=9;
-        if(sizeFirstArray==countDuplInFirstArr) countDuplInFirstArr--;
-        if(sizeSecondArray==countDuplInSecondArr) countDuplInSecondArr--;
-
-        Person[] standartArray = {person1,person2,person3,person4,person5,person6,person7,person8,person9,person10};
-        Person[] firstArray = new Person[sizeFirstArray];
-        Person[] secondArray = new Person[sizeSecondArray];
-        Random rnd = new Random();
-
-        int indexFirst = sizeFirstArray-countDuplInFirstArr;
-        for (int i=0; i < indexFirst; ) {
-            int j = rnd.nextInt(10);
-            if (!includes(firstArray,standartArray[j])) {
-                firstArray[i] = standartArray[j];
-                i++;
-            }
-        }
-        for (int i=indexFirst; i<sizeFirstArray; i++){
-            firstArray[i] = firstArray[rnd.nextInt(indexFirst)];
-        }
-
-        int indexSecond = sizeSecondArray-countDuplInSecondArr;
-        for (int i=0; i < indexSecond; ) {
-            int j = rnd.nextInt(10);
-            if (!includes(secondArray,standartArray[j])) {
-                secondArray[i] = standartArray[j];
-                i++;
-            }
-        }
-        for (int i=indexSecond; i<sizeSecondArray; i++){
-            secondArray[i] = secondArray[rnd.nextInt(indexSecond)];
-        }
-
-        Map<String,Person[]> arrays = new HashMap<>();
-        arrays.put("firstArray", firstArray);
-        arrays.put("secondArray", secondArray);
-
-        return arrays;
-    }
-
-    private boolean includes(Person[] array, Person person) {
-        for (Person arrPerson : array) {
-            if (person.equals(arrPerson)) return true;
-        }
-        return false;
-    }
 }

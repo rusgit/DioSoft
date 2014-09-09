@@ -1,15 +1,14 @@
-package com.diosoft.impl;
+package com.diosoft.helper;
 
-import com.diosoft.domain.Person;
-import com.diosoft.interfaces.JoinOperationByArray;
+import com.diosoft.common.Person;
 import com.diosoft.util.PersonComparator;
 import java.util.Arrays;
 import javax.inject.Named;
 
-@Named("arrayHelper")
-public class ArrayHelper implements JoinOperationByArray {
+@Named("arrayHelperImpl")
+public class ArrayHelperImpl implements ArrayHelper {
 
-    public ArrayHelper(){
+    public ArrayHelperImpl(){
     }
 
    public Person[] merge(Person[] firstArray, Person[] secondArray) {

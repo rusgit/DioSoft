@@ -1,15 +1,12 @@
-package com.diosoft.impl;
+package com.diosoft.helper;
 
-import com.diosoft.domain.Person;
+import com.diosoft.common.Person;
 import com.diosoft.util.PersonComparator;
 import org.junit.Test;
-
 import java.util.*;
-
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class CollectionHelperTest {
+public class CollectionHelperImplTest {
 
     private Person person1 = new Person.Builder().name("Ruslan").lastName("Borisov").age(25).post(Person.Post.DEVELOPER).build();
     private Person person2 = new Person.Builder().name("Anton").lastName("Zemlyankin").age(22).post(Person.Post.DEVELOPER).build();
@@ -38,7 +35,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         List<Person> actualColl = ch.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
@@ -58,7 +55,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         List<Person> actualColl = ch.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
@@ -78,7 +75,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = null;
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         List<Person> actualColl = ch.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
@@ -99,7 +96,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         List<Person> actualColl = ch.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
@@ -120,7 +117,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         List<Person> actualColl = ch.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
@@ -141,7 +138,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         List<Person> actualColl = ch.leftUnion(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
@@ -162,7 +159,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         Set<Person> actualColl = ch.merge(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
@@ -179,7 +176,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = null;
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         Set<Person> actualColl = ch.merge(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
@@ -197,7 +194,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         Set<Person> actualColl = ch.merge(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
@@ -215,7 +212,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         Set<Person> actualColl = ch.merge(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
@@ -233,7 +230,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         Set<Person> actualColl = ch.innerJoin(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
@@ -250,7 +247,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = null;
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         Set<Person> actualColl = ch.innerJoin(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
@@ -268,7 +265,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         Set<Person> actualColl = ch.innerJoin(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
@@ -286,7 +283,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         Set<Person> actualColl = ch.innerJoin(firstColl,secondColl);
 
         boolean result = expectedColl.equals(actualColl);
@@ -304,7 +301,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         List<Person> actualColl = ch.outerJoin(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
@@ -324,7 +321,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = null;
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         List<Person> actualColl = ch.outerJoin(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
@@ -345,7 +342,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         List<Person> actualColl = ch.outerJoin(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());
@@ -366,7 +363,7 @@ public class CollectionHelperTest {
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
-        CollectionHelper ch = new CollectionHelper();
+        CollectionHelper ch = new CollectionHelperImpl();
         List<Person> actualColl = ch.outerJoin(firstColl,secondColl);
 
         Collections.sort(expectedColl, new PersonComparator());

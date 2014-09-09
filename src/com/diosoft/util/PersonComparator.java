@@ -1,7 +1,6 @@
 package com.diosoft.util;
 
-import com.diosoft.domain.Person;
-
+import com.diosoft.common.Person;
 import java.util.Comparator;
 
 public class PersonComparator implements Comparator<Person> {

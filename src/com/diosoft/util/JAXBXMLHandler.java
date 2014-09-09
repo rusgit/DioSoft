@@ -1,7 +1,7 @@
 package com.diosoft.util;
 
-import com.diosoft.domain.Person;
-import com.diosoft.domain.Persons;
+import com.diosoft.common.Person;
+import com.diosoft.common.Persons;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;

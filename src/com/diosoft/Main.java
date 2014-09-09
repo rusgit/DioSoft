@@ -1,55 +1,62 @@
 package com.diosoft;
 
-import com.diosoft.domain.Person;
-import com.diosoft.interfaces.ArrayGenerator;
-import com.diosoft.service.ArrayService;
-import com.diosoft.service.CollectionService;
-import com.diosoft.util.JAXBXMLHandler;
+import com.diosoft.common.Person;
+import com.diosoft.service.*;
 import com.diosoft.util.PersonGenerator;
+import com.diosoft.util.PersonGeneratorImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.io.*;
 import javax.xml.bind.*;
-
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) throws JAXBException, IOException {
 
-// Generator initialization
-        ArrayGenerator arrayGenerator = new PersonGenerator();
-        Map<String,Person[]> map = arrayGenerator.createArrays(8, 6);
+// PERSON GENERATOR: 2 arrays
+        PersonGenerator arrayGenerator = new PersonGeneratorImpl();
+        Map<String,Person[]> map = arrayGenerator.createArrays(6, 4);
 
-// Arrays initialization
+// ARRAYS INITIALIZATION
         Person[] firstArray = map.get("firstArray");
         Person[] secondArray = map.get("secondArray");
 
-// Collections initialization
+// COLLECTION INITIALIZATION
         List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
 
 // SPRING CONTEXT
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/app-context.xml");
-        CollectionService serviceCollection = (CollectionService) ctx.getBean("serviceCollection");
-        ArrayService serviceArray = (ArrayService) ctx.getBean("serviceArray");
+        CollectionService collectionService = (CollectionService) ctx.getBean("collectionServiceImpl");
+        ArrayService arrayService = (ArrayService) ctx.getBean("arrayServiceImpl");
+        PersonService personService = (PersonService) ctx.getBean("personServiceImpl");
 
-// FACTORY (ALTERNATIVE WAY)
-//        CollectionService collectionService =  ServiceFactory.CollectionServiceFactory.create();
-//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+// COLLECTION JOIN
+        collectionService.jaxbInputData(firstColl,secondColl);
+        collectionService.leftUnion(firstColl, secondColl);
+        collectionService.merge(firstColl, secondColl);
+        collectionService.innerJoin(firstColl, secondColl);
+        collectionService.outerJoin(firstColl, secondColl);
 
-// COLLECTION IMPLEMENTATION
-        serviceCollection.jaxbInputData(firstColl,secondColl);
-        serviceCollection.leftUnion(firstColl, secondColl);
-        serviceCollection.merge(firstColl, secondColl);
-        serviceCollection.innerJoin(firstColl, secondColl);
-        serviceCollection.outerJoin(firstColl, secondColl);
+// ARRAY JOIN
+        arrayService.leftUnion(firstArray, secondArray);
+        arrayService.merge(firstArray, secondArray);
+        arrayService.innerJoin(firstArray, secondArray);
+        arrayService.outerJoin(firstArray, secondArray);
 
-// ARRAY IMPLEMENTATION
-//        serviceArray.leftUnion(firstArray, secondArray);
-//        serviceArray.merge(firstArray, secondArray);
-//        serviceArray.innerJoin(firstArray, secondArray);
-//        serviceArray.outerJoin(firstArray, secondArray);
+// PERSON GENERATOR: more 2 collection with same last name
+        List<Person>[] personsGen = arrayGenerator.createSameSurnameMore2array(5);
+
+// PERSON OPERATIONS STANDART
+        personService.getInnerAndOuterPersons(personsGen[0],personsGen[1]);
+        personService.getUniquePersonsOfSameAge(25,personsGen[0],personsGen[1]);
+
+// PERSON OPERATIONS ADVANCED
+        personService.getInnerAndOuterPersons(personsGen);
+        personService.getUniquePersonsOfSameAge(25,personsGen);
+
+
 
    }
 }

@@ -1,16 +1,15 @@
 package com.diosoft.service;
 
-import com.diosoft.domain.Person;
-import com.diosoft.interfaces.JoinOperationByCollection;
+import com.diosoft.common.Person;
+import com.diosoft.helper.CollectionHelper;
+import com.diosoft.helper.CollectionHelperImpl;
 import com.diosoft.util.PersonComparator;
-import com.diosoft.util.ServiceFactory;
 import org.junit.Test;
 import java.util.*;
 import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
 
-import static org.junit.Assert.assertTrue;
-
-public class CollectionServiceTest {
+public class CollectionServiceImplTest {
 
     private Person person1 = new Person.Builder().name("Ruslan").lastName("Borisov").age(25).post(Person.Post.DEVELOPER).build();
     private Person person2 = new Person.Builder().name("Anton").lastName("Zemlyankin").age(22).post(Person.Post.DEVELOPER).build();
@@ -40,8 +39,8 @@ public class CollectionServiceTest {
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelper.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.leftUnion(firstColl,secondColl)).thenReturn(expectedColl);
 
@@ -63,8 +62,8 @@ public class CollectionServiceTest {
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.leftUnion(firstColl,secondColl)).thenReturn(expectedColl);
         List<Person> actualColl = collectionService.leftUnion(firstColl,secondColl);
@@ -85,8 +84,8 @@ public class CollectionServiceTest {
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.leftUnion(firstColl,secondColl)).thenReturn(expectedColl);
         List<Person> actualColl = collectionService.leftUnion(firstColl,secondColl);
@@ -108,8 +107,8 @@ public class CollectionServiceTest {
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.leftUnion(firstColl,secondColl)).thenReturn(expectedColl);
         List<Person> actualColl = collectionService.leftUnion(firstColl,secondColl);
@@ -134,8 +133,8 @@ public class CollectionServiceTest {
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.leftUnion(firstColl,secondColl)).thenReturn(expectedColl);
         List<Person> actualColl = collectionService.leftUnion(firstColl,secondColl);
@@ -160,8 +159,8 @@ public class CollectionServiceTest {
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.leftUnion(firstColl,secondColl)).thenReturn(expectedColl);
         List<Person> actualColl = collectionService.leftUnion(firstColl,secondColl);
@@ -186,8 +185,8 @@ public class CollectionServiceTest {
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.merge(firstColl,secondColl)).thenReturn(expectedColl);
         Set<Person> actualColl = collectionService.merge(firstColl,secondColl);
@@ -208,8 +207,8 @@ public class CollectionServiceTest {
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.merge(firstColl,secondColl)).thenReturn(expectedColl);
         Set<Person> actualColl = collectionService.merge(firstColl,secondColl);
@@ -231,8 +230,8 @@ public class CollectionServiceTest {
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.merge(firstColl,secondColl)).thenReturn(expectedColl);
         Set<Person> actualColl = collectionService.merge(firstColl,secondColl);
@@ -254,8 +253,8 @@ public class CollectionServiceTest {
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.merge(firstColl,secondColl)).thenReturn(expectedColl);
         Set<Person> actualColl = collectionService.merge(firstColl,secondColl);
@@ -277,8 +276,8 @@ public class CollectionServiceTest {
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.innerJoin(firstColl,secondColl)).thenReturn(expectedColl);
         Set<Person> actualColl = collectionService.innerJoin(firstColl,secondColl);
@@ -299,8 +298,8 @@ public class CollectionServiceTest {
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.innerJoin(firstColl,secondColl)).thenReturn(expectedColl);
         Set<Person> actualColl = collectionService.innerJoin(firstColl,secondColl);
@@ -322,8 +321,8 @@ public class CollectionServiceTest {
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.innerJoin(firstColl,secondColl)).thenReturn(expectedColl);
         Set<Person> actualColl = collectionService.innerJoin(firstColl,secondColl);
@@ -345,8 +344,8 @@ public class CollectionServiceTest {
         Set<Person> expectedColl = new TreeSet<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.innerJoin(firstColl,secondColl)).thenReturn(expectedColl);
         Set<Person> actualColl = collectionService.innerJoin(firstColl,secondColl);
@@ -368,8 +367,8 @@ public class CollectionServiceTest {
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.outerJoin(firstColl,secondColl)).thenReturn(expectedColl);
         List<Person> actualColl = collectionService.outerJoin(firstColl,secondColl);
@@ -393,8 +392,8 @@ public class CollectionServiceTest {
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.outerJoin(firstColl,secondColl)).thenReturn(expectedColl);
         List<Person> actualColl = collectionService.outerJoin(firstColl,secondColl);
@@ -419,8 +418,8 @@ public class CollectionServiceTest {
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.outerJoin(firstColl,secondColl)).thenReturn(expectedColl);
         List<Person> actualColl = collectionService.outerJoin(firstColl,secondColl);
@@ -445,8 +444,8 @@ public class CollectionServiceTest {
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));
 
 //        CollectionService collectionService = ServiceFactory.CollectionServiceFactory.create();
-        JoinOperationByCollection mock = mock(JoinOperationByCollection.class);
-        CollectionService collectionService = new CollectionService(mock);
+        CollectionHelper mock = mock(CollectionHelperImpl.class);
+        CollectionService collectionService = new CollectionServiceImpl(mock);
 
         when(mock.outerJoin(firstColl,secondColl)).thenReturn(expectedColl);
         List<Person> actualColl = collectionService.outerJoin(firstColl,secondColl);

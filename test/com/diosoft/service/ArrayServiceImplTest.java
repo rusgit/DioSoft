@@ -1,15 +1,17 @@
-package com.diosoft.impl;
+package com.diosoft.service;
 
-import com.diosoft.domain.Person;
-import com.diosoft.impl.ArrayHelper;
+import com.diosoft.common.Person;
+import com.diosoft.helper.ArrayHelper;
 import com.diosoft.util.PersonComparator;
-import junit.framework.TestCase;
+import com.diosoft.util.ServiceFactory;
 import org.junit.Test;
 import java.util.Arrays;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-public class ArrayHelperTest extends TestCase {
-
+public class ArrayServiceImplTest {
+    //local code review (vtegza): no need to be final @ 31.08.14
+    // (rusgit): corrected
     private Person person1 = new Person.Builder().name("Ruslan").lastName("Borisov").age(25).post(Person.Post.DEVELOPER).build();
     private Person person2 = new Person.Builder().name("Anton").lastName("Zemlyankin").age(22).post(Person.Post.DEVELOPER).build();
     private Person person3 = new Person.Builder().name("Ekaterina").lastName("Volkova").age(28).post(Person.Post.DEVELOPER).build();
@@ -26,21 +28,26 @@ public class ArrayHelperTest extends TestCase {
     private Person person6_dupl = new Person.Builder(person6).build();
     private Person person9_dupl = new Person.Builder(person9).build();
 
-
     @Test
     public void testLeftUnion() throws Exception {
 
         Person[] firstArray = {person1, person4, person3, person5};
         Person[] secondArray = {person1, person2, person3, person6, person7, person4};
         Person[] expectedArray = {person1, person4, person3, person5, person1, person4, person3};
+        
+//        ArrayServiceImpl arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.leftUnion(firstArray,secondArray);
+        when(mock.leftUnion(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).leftUnion(firstArray,secondArray);
     }
 
     @Test
@@ -50,13 +57,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {person1, person3, person2};
         Person[] expectedArray = {};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.leftUnion(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.leftUnion(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).leftUnion(firstArray,secondArray);
     }
 
     @Test
@@ -66,13 +79,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = null;
         Person[] expectedArray = {person1, person3, person2};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.leftUnion(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.leftUnion(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).leftUnion(firstArray,secondArray);
     }
 
     @Test
@@ -82,13 +101,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {person1, person3, person2, person10};
         Person[] expectedArray = {};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.leftUnion(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.leftUnion(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).leftUnion(firstArray,secondArray);
     }
 
     @Test
@@ -98,29 +123,41 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {};
         Person[] expectedArray = {person1, person3, person2, person10};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.leftUnion(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.leftUnion(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).leftUnion(firstArray,secondArray);
     }
 
     @Test
-     public void testLeftUnion_WithDuplicateArray() throws Exception {
+    public void testLeftUnion_WithDuplicateArray() throws Exception {
 
-        Person[] firstArray = {person1, person3, person2, person1_dupl, person3_dupl};
+        Person[] firstArray = {person1,person3,person2,person1_dupl,person3_dupl};
         Person[] secondArray = {person10, person3, person2, person1, person3_dupl};
         Person[] expectedArray = {person1, person3, person2, person1_dupl, person3_dupl, person3, person2, person1, person3_dupl};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.leftUnion(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.leftUnion(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.leftUnion(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).leftUnion(firstArray,secondArray);
     }
 
     @Test
@@ -130,13 +167,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {person1, person2, person3, person6, person7, person4};
         Person[] expectedArray = {person1, person2, person3, person4, person5, person6, person7};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.merge(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.merge(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.merge(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).merge(firstArray,secondArray);
     }
 
     @Test
@@ -146,13 +189,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = null;
         Person[] expectedArray = {person1, person3, person2};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.merge(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.merge(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.merge(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).merge(firstArray,secondArray);
     }
 
     @Test
@@ -162,13 +211,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {};
         Person[] expectedArray = {person1, person3, person2, person10};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.merge(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.merge(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.merge(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).merge(firstArray,secondArray);
     }
 
     @Test
@@ -178,13 +233,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {person10, person3, person2, person1, person3_dupl};
         Person[] expectedArray = {person1, person3, person2, person10};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.merge(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.merge(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.merge(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).merge(firstArray,secondArray);
     }
 
     @Test
@@ -194,13 +255,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {person10, person4, person1, person4, person7};
         Person[] expectedArray = {person1, person10};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.innerJoin(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.innerJoin(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.innerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).innerJoin(firstArray,secondArray);
     }
 
     @Test
@@ -210,13 +277,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = null;
         Person[] expectedArray = {};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.innerJoin(firstArray, secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.innerJoin(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.innerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).innerJoin(firstArray,secondArray);
     }
 
     @Test
@@ -226,14 +299,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {};
         Person[] expectedArray = {};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.innerJoin(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.innerJoin(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.innerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
-
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).innerJoin(firstArray,secondArray);
     }
 
     @Test
@@ -243,13 +321,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {person1, person3, person6 ,person6_dupl,};
         Person[] expectedArray = {person1, person3};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.innerJoin(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.innerJoin(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.innerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).innerJoin(firstArray,secondArray);
     }
 
     @Test
@@ -259,13 +343,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {person2, person4, person7};
         Person[] expectedArray = {person5, person1, person6, person3, person4};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.outerJoin(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.outerJoin(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.outerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).outerJoin(firstArray,secondArray);
     }
 
     @Test
@@ -275,13 +365,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = null;
         Person[] expectedArray = {person1, person3, person2};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.outerJoin(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.outerJoin(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.outerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).outerJoin(firstArray,secondArray);
     }
 
     @Test
@@ -291,13 +387,19 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {};
         Person[] expectedArray = {person1, person3, person2};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.outerJoin(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.outerJoin(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.outerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).outerJoin(firstArray,secondArray);
     }
 
     @Test
@@ -307,28 +409,18 @@ public class ArrayHelperTest extends TestCase {
         Person[] secondArray = {person3, person2, person3_dupl};
         Person[] expectedArray = {person1, person1_dupl};
 
-        ArrayHelper ah = new ArrayHelper();
-        Person[] actualArray = ah.outerJoin(firstArray,secondArray);
+//        ArrayService arrayService = ServiceFactory.ArrayServiceFactory.create();
+        ArrayHelper mock = mock(ArrayHelper.class);
+        ArrayService arrayService = new ArrayServiceImpl(mock);
+
+        when(mock.outerJoin(firstArray,secondArray)).thenReturn(expectedArray);
+
+        Person[] actualArray = arrayService.outerJoin(firstArray,secondArray);
 
         Arrays.sort(expectedArray, new PersonComparator());
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        verify(mock,times(1)).outerJoin(firstArray,secondArray);
     }
-
-    @Test
-    public void test_WithMaxSizeArray() {
-        Person[] firstArray = null;
-        for (int i = Integer.MAX_VALUE; i >= 0; i--) {
-            try {
-                firstArray = new Person[i/100];
-                System.out.println("Successful init, size: " + firstArray.length);
-                // size: new Person[21474836] - Successful init
-                break;
-            } catch (Error err2) {
-                System.out.println("Failed, iteration: " + i);
-            }
-        }
-    }
-
 }

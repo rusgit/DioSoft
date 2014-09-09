@@ -1,8 +1,8 @@
-package com.diosoft.service;
+package com.diosoft.helper;
 
 import com.diosoft.common.Person;
 
-public interface ArrayService {
+public interface ArrayHelper {
 
     Person[] merge(Person[] firstArray, Person[] secondArray);
 
@@ -11,6 +11,4 @@ public interface ArrayService {
     Person[] innerJoin(Person[] firstArray, Person[] secondArray);
 
     Person[] outerJoin(Person[] firstArray, Person[] secondArray);
-
-
 }

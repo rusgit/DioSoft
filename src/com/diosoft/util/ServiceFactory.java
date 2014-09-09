@@ -1,23 +1,22 @@
 package com.diosoft.util;
 
-
-import com.diosoft.impl.ArrayHelper;
-import com.diosoft.impl.CollectionHelper;
-import com.diosoft.service.ArrayService;
-import com.diosoft.service.CollectionService;
+import com.diosoft.helper.ArrayHelperImpl;
+import com.diosoft.helper.CollectionHelperImpl;
+import com.diosoft.service.ArrayServiceImpl;
+import com.diosoft.service.CollectionServiceImpl;
 
 public class ServiceFactory {
 
     public static class ArrayServiceFactory{
-        public static ArrayService create() {
-            ArrayHelper ah = new ArrayHelper();
-            return new ArrayService(ah);
+        public static ArrayServiceImpl create() {
+            ArrayHelperImpl ah = new ArrayHelperImpl();
+            return new ArrayServiceImpl(ah);
         }
     }
     public static class CollectionServiceFactory{
-        public static CollectionService create() {
-            CollectionHelper ch = new CollectionHelper();
-            return new CollectionService(ch);
+        public static CollectionServiceImpl create() {
+            CollectionHelperImpl ch = new CollectionHelperImpl();
+            return new CollectionServiceImpl(ch);
         }
     }
 
