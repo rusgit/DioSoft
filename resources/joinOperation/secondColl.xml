@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <persons>
-    <person id="1">
-        <name>Ruslan</name>
-        <lastName>Borisov</lastName>
-        <age>25</age>
-        <post>DEVELOPER</post>
+    <person id="5">
+        <name>Elena</name>
+        <lastName>Kirichenko</lastName>
+        <age>30</age>
+        <post>QA</post>
     </person>
     <person id="7">
         <name>Vitaliy</name>
@@ -12,16 +12,16 @@
         <age>31</age>
         <post>QA</post>
     </person>
-    <person id="4">
-        <name>Illya</name>
-        <lastName>Pinchuk</lastName>
-        <age>20</age>
-        <post>QA</post>
-    </person>
     <person id="3">
         <name>Ekaterina</name>
         <lastName>Volkova</lastName>
         <age>28</age>
         <post>DEVELOPER</post>
+    </person>
+    <person id="8">
+        <name>Violete</name>
+        <lastName>Egorova</lastName>
+        <age>40</age>
+        <post>DIRECTOR</post>
     </person>
 </persons>

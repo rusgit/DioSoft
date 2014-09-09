@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <persons>
-    <person id="17">
+    <person id="32">
+        <name>Ruslan</name>
+        <lastName>Horoshiy</lastName>
+        <age>40</age>
+        <post>DIRECTOR</post>
+    </person>
+    <person id="39">
+        <name>Svyatoslav</name>
+        <lastName>Landushev</lastName>
+        <age>45</age>
+        <post>DIRECTOR</post>
+    </person>
+    <person id="37">
         <name>Vitaliy</name>
-        <lastName>Kirichenko</lastName>
-        <age>31</age>
+        <lastName>Volkov</lastName>
+        <age>50</age>
+        <post>DIRECTOR</post>
+    </person>
+    <person id="11">
+        <name>Ekaterina</name>
+        <lastName>Kudyna</lastName>
+        <age>25</age>
+        <post>DEVELOPER</post>
+    </person>
+    <person id="16">
+        <name>Ruslan</name>
+        <lastName>Borisov</lastName>
+        <age>35</age>
         <post>QA</post>
     </person>
-    <person id="20">
-        <name>Svetlana</name>
+    <person id="21">
+        <name>Anton</name>
         <lastName>Drobich</lastName>
-        <age>31</age>
-        <post>DIRECTOR</post>
+        <age>35</age>
+        <post>QA</post>
     </person>
-    <person id="26">
-        <name>Ruslan</name>
-        <lastName>Kuch</lastName>
-        <age>40</age>
-        <post>DIRECTOR</post>
-    </person>
-    <person id="29">
-        <name>Ruslan</name>
+    <person id="31">
+        <name>Vitaliy</name>
         <lastName>Milevsky</lastName>
-        <age>40</age>
+        <age>50</age>
         <post>DIRECTOR</post>
     </person>
 </persons>

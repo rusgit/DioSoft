@@ -1,27 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <persons>
-    <person id="17">
-        <name>Vitaliy</name>
-        <lastName>Kirichenko</lastName>
-        <age>31</age>
-        <post>QA</post>
-    </person>
-    <person id="20">
-        <name>Svetlana</name>
-        <lastName>Drobich</lastName>
-        <age>31</age>
-        <post>DIRECTOR</post>
-    </person>
-    <person id="32">
-        <name>Ruslan</name>
-        <lastName>Horoshiy</lastName>
-        <age>40</age>
-        <post>DIRECTOR</post>
-    </person>
-    <person id="35">
-        <name>Ruslan</name>
-        <lastName>Volkov</lastName>
-        <age>40</age>
+    <person id="27">
+        <name>Svyatoslav</name>
+        <lastName>Kuch</lastName>
+        <age>45</age>
         <post>DIRECTOR</post>
     </person>
 </persons>

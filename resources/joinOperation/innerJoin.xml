@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <persons>
-    <person id="1">
-        <name>Ruslan</name>
-        <lastName>Borisov</lastName>
-        <age>25</age>
+    <person id="3">
+        <name>Ekaterina</name>
+        <lastName>Volkova</lastName>
+        <age>28</age>
         <post>DEVELOPER</post>
+    </person>
+    <person id="7">
+        <name>Vitaliy</name>
+        <lastName>Bondar</lastName>
+        <age>31</age>
+        <post>QA</post>
     </person>
 </persons>

@@ -18,12 +18,6 @@
         <age>30</age>
         <post>QA</post>
     </person>
-    <person id="4">
-        <name>Illya</name>
-        <lastName>Pinchuk</lastName>
-        <age>20</age>
-        <post>QA</post>
-    </person>
     <person id="1">
         <name>Ruslan</name>
         <lastName>Borisov</lastName>
@@ -36,12 +30,6 @@
         <age>50</age>
         <post>DIRECTOR</post>
     </person>
-    <person id="9">
-        <name>Svyatoslav</name>
-        <lastName>Drobich</lastName>
-        <age>45</age>
-        <post>DIRECTOR</post>
-    </person>
     <person id="8">
         <name>Violete</name>
         <lastName>Egorova</lastName>
@@ -52,6 +40,12 @@
         <name>Vitaliy</name>
         <lastName>Bondar</lastName>
         <age>31</age>
+        <post>QA</post>
+    </person>
+    <person id="6">
+        <name>Vladimir</name>
+        <lastName>Kudyna</lastName>
+        <age>35</age>
         <post>QA</post>
     </person>
 </persons>
