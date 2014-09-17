@@ -18,11 +18,11 @@
         <age>30</age>
         <post>QA</post>
     </person>
-    <person id="1">
-        <name>Ruslan</name>
-        <lastName>Borisov</lastName>
-        <age>25</age>
-        <post>DEVELOPER</post>
+    <person id="4">
+        <name>Illya</name>
+        <lastName>Pinchuk</lastName>
+        <age>20</age>
+        <post>QA</post>
     </person>
     <person id="10">
         <name>Svetlana</name>

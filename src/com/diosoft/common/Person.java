@@ -1,12 +1,7 @@
 package com.diosoft.common;
 
-import javax.xml.bind.annotation.*;
-
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Person implements Comparable<Person> {
 
-    @XmlAttribute
     private final long id;
     private final String name;
     private final String lastName;
@@ -21,14 +16,9 @@ public class Person implements Comparable<Person> {
         this.post = builder.post;
     }
 
-    public Person(){
-        this.id = 0;
-        this.name = "";
-        this.lastName = "";
-        this.age = 0;
-        this.post = null;
+    public long getId() {
+        return id;
     }
-
     public Post getPost() {
         return post;
     }

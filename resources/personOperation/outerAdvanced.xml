@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <persons>
-    <person id="27">
+    <person id="39">
         <name>Svyatoslav</name>
+        <lastName>Landushev</lastName>
+        <age>45</age>
+        <post>DIRECTOR</post>
+    </person>
+    <person id="11">
+        <name>Ekaterina</name>
+        <lastName>Kudyna</lastName>
+        <age>25</age>
+        <post>DEVELOPER</post>
+    </person>
+    <person id="21">
+        <name>Anton</name>
+        <lastName>Drobich</lastName>
+        <age>35</age>
+        <post>QA</post>
+    </person>
+    <person id="26">
+        <name>Ruslan</name>
         <lastName>Kuch</lastName>
+        <age>40</age>
+        <post>DIRECTOR</post>
+    </person>
+    <person id="19">
+        <name>Svyatoslav</name>
+        <lastName>Kirichenko</lastName>
         <age>45</age>
         <post>DIRECTOR</post>
     </person>

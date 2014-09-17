@@ -1,12 +1,14 @@
 package com.diosoft.util;
 
 import com.diosoft.common.Person;
-import com.diosoft.common.Persons;
+import com.diosoft.common.PersonAdapter;
+import com.diosoft.common.PersonAdapterWrapper;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -18,19 +20,19 @@ public class JAXBXMLHandler {
         JAXBContext context;
         BufferedWriter writer = null;
         writer = new BufferedWriter(new FileWriter(selectedFile));
-        context = JAXBContext.newInstance(Persons.class);
+        context = JAXBContext.newInstance(PersonAdapterWrapper.class);
         Marshaller m = context.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        m.marshal(new Persons(persons), writer);
+        m.marshal(new PersonAdapterWrapper(persons), writer);
         writer.close();
     }
 
-    public static Collection<Person> unmarshal(File importFile) throws JAXBException {
-        Persons persons = new Persons();
+    public static Collection<PersonAdapter> unmarshal(File importFile) throws JAXBException {
+        PersonAdapterWrapper persons = new PersonAdapterWrapper();
 
-        JAXBContext context = JAXBContext.newInstance(Persons.class);
+        JAXBContext context = JAXBContext.newInstance(PersonAdapterWrapper.class);
         Unmarshaller um = context.createUnmarshaller();
-        persons = (Persons) um.unmarshal(importFile);
+        persons = (PersonAdapterWrapper) um.unmarshal(importFile);
 
         return persons.getPersons();
     }

@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<persons/>
+<persons>
+    <person id="11">
+        <name>Ekaterina</name>
+        <lastName>Kudyna</lastName>
+        <age>25</age>
+        <post>DEVELOPER</post>
+    </person>
+    <person id="11">
+        <name>Ekaterina</name>
+        <lastName>Kudyna</lastName>
+        <age>25</age>
+        <post>DEVELOPER</post>
+    </person>
+</persons>

@@ -6,4 +6,10 @@
         <age>25</age>
         <post>DEVELOPER</post>
     </person>
+    <person id="11">
+        <name>Ekaterina</name>
+        <lastName>Kudyna</lastName>
+        <age>25</age>
+        <post>DEVELOPER</post>
+    </person>
 </persons>

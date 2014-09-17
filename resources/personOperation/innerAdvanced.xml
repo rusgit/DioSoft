@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <persons>
+    <person id="23">
+        <name>Ruslan</name>
+        <lastName>Zemlyankin</lastName>
+        <age>40</age>
+        <post>DIRECTOR</post>
+    </person>
+    <person id="32">
+        <name>Ruslan</name>
+        <lastName>Horoshiy</lastName>
+        <age>40</age>
+        <post>DIRECTOR</post>
+    </person>
     <person id="30">
         <name>Svyatoslav</name>
         <lastName>Milevsky</lastName>
         <age>45</age>
         <post>DIRECTOR</post>
     </person>
-    <person id="19">
-        <name>Svyatoslav</name>
-        <lastName>Kirichenko</lastName>
-        <age>45</age>
+    <person id="25">
+        <name>Vitaliy</name>
+        <lastName>Zemlyankin</lastName>
+        <age>50</age>
         <post>DIRECTOR</post>
-    </person>
-    <person id="12">
-        <name>Elena</name>
-        <lastName>Kudyna</lastName>
-        <age>22</age>
-        <post>DEVELOPER</post>
-    </person>
-    <person id="15">
-        <name>Svyatoslav</name>
-        <lastName>Borisov</lastName>
-        <age>30</age>
-        <post>QA</post>
     </person>
     <person id="35">
         <name>Ruslan</name>
@@ -36,35 +36,11 @@
         <age>50</age>
         <post>DIRECTOR</post>
     </person>
-    <person id="38">
-        <name>Ruslan</name>
-        <lastName>Landushev</lastName>
-        <age>40</age>
-        <post>DIRECTOR</post>
-    </person>
-    <person id="32">
-        <name>Ruslan</name>
-        <lastName>Horoshiy</lastName>
-        <age>40</age>
-        <post>DIRECTOR</post>
-    </person>
-    <person id="16">
-        <name>Ruslan</name>
+    <person id="14">
+        <name>Vladimir</name>
         <lastName>Borisov</lastName>
-        <age>35</age>
+        <age>20</age>
         <post>QA</post>
-    </person>
-    <person id="36">
-        <name>Svyatoslav</name>
-        <lastName>Volkov</lastName>
-        <age>45</age>
-        <post>DIRECTOR</post>
-    </person>
-    <person id="18">
-        <name>Violeta</name>
-        <lastName>Kirichenko</lastName>
-        <age>40</age>
-        <post>DIRECTOR</post>
     </person>
     <person id="33">
         <name>Svyatoslav</name>
@@ -72,40 +48,16 @@
         <age>45</age>
         <post>DIRECTOR</post>
     </person>
-    <person id="39">
+    <person id="15">
         <name>Svyatoslav</name>
-        <lastName>Landushev</lastName>
+        <lastName>Borisov</lastName>
+        <age>30</age>
+        <post>QA</post>
+    </person>
+    <person id="36">
+        <name>Svyatoslav</name>
+        <lastName>Volkov</lastName>
         <age>45</age>
         <post>DIRECTOR</post>
-    </person>
-    <person id="37">
-        <name>Vitaliy</name>
-        <lastName>Volkov</lastName>
-        <age>50</age>
-        <post>DIRECTOR</post>
-    </person>
-    <person id="11">
-        <name>Ekaterina</name>
-        <lastName>Kudyna</lastName>
-        <age>25</age>
-        <post>DEVELOPER</post>
-    </person>
-    <person id="29">
-        <name>Ruslan</name>
-        <lastName>Milevsky</lastName>
-        <age>40</age>
-        <post>DIRECTOR</post>
-    </person>
-    <person id="21">
-        <name>Anton</name>
-        <lastName>Drobich</lastName>
-        <age>35</age>
-        <post>QA</post>
-    </person>
-    <person id="22">
-        <name>Vitaliy</name>
-        <lastName>Drobich</lastName>
-        <age>31</age>
-        <post>QA</post>
     </person>
 </persons>

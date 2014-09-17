@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <persons>
-    <person id="5">
-        <name>Elena</name>
-        <lastName>Kirichenko</lastName>
-        <age>30</age>
-        <post>QA</post>
-    </person>
     <person id="7">
         <name>Vitaliy</name>
         <lastName>Bondar</lastName>
         <age>31</age>
         <post>QA</post>
     </person>
-    <person id="3">
-        <name>Ekaterina</name>
-        <lastName>Volkova</lastName>
-        <age>28</age>
+    <person id="2">
+        <name>Anton</name>
+        <lastName>Zemlyankin</lastName>
+        <age>22</age>
         <post>DEVELOPER</post>
+    </person>
+    <person id="4">
+        <name>Illya</name>
+        <lastName>Pinchuk</lastName>
+        <age>20</age>
+        <post>QA</post>
     </person>
     <person id="8">
         <name>Violete</name>

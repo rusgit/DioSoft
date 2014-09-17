@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <persons>
-    <person id="18">
-        <name>Violeta</name>
-        <lastName>Kirichenko</lastName>
+    <person id="32">
+        <name>Ruslan</name>
+        <lastName>Horoshiy</lastName>
         <age>40</age>
         <post>DIRECTOR</post>
     </person>
-    <person id="19">
+    <person id="33">
         <name>Svyatoslav</name>
-        <lastName>Kirichenko</lastName>
+        <lastName>Horoshiy</lastName>
         <age>45</age>
         <post>DIRECTOR</post>
     </person>

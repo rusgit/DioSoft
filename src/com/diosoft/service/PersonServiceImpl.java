@@ -1,6 +1,7 @@
 package com.diosoft.service;
 
 import com.diosoft.common.Person;
+import com.diosoft.common.PersonAdapterWrapper;
 import com.diosoft.helper.PersonOperations;
 import com.diosoft.util.JAXBXMLHandler;
 import org.apache.log4j.Logger;
@@ -41,10 +42,10 @@ public class PersonServiceImpl implements PersonService {
         LOG.info("Result Collection: ");
         LOG.info(result);
 
-        File inner = new File("resources/personOperation/inner.xml");
-        JAXBXMLHandler.marshal(result.get("Inner"),inner);
-        File outer = new File("resources/personOperation/outer.xml");
-        JAXBXMLHandler.marshal(result.get("Outer"),outer);
+        File innerFile = new File("resources/personOperation/inner.xml");
+        JAXBXMLHandler.marshal(result.get("Inner"),innerFile);
+        File outerFile = new File("resources/personOperation/outer.xml");
+        JAXBXMLHandler.marshal(result.get("Outer"),outerFile);
 
         return result;
     }
@@ -84,10 +85,10 @@ public class PersonServiceImpl implements PersonService {
         LOG.info("Result Collection: ");
         LOG.info(result);
 
-        File innerAdvanced = new File("resources/personOperation/innerAdvanced.xml");
-        JAXBXMLHandler.marshal(result.get("Inner"),innerAdvanced);
-        File outerAdvenced = new File("resources/personOperation/outerAdvanced.xml");
-        JAXBXMLHandler.marshal(result.get("Outer"),outerAdvenced);
+        File innerFileAdvanced = new File("resources/personOperation/innerAdvanced.xml");
+        JAXBXMLHandler.marshal(result.get("Inner"),innerFileAdvanced);
+        File outerFileAdvanced = new File("resources/personOperation/outerAdvanced.xml");
+        JAXBXMLHandler.marshal(result.get("Outer"),outerFileAdvanced);
 
         return result;
     }
@@ -105,6 +106,8 @@ public class PersonServiceImpl implements PersonService {
 
         LOG.info("Result Collection: ");
         LOG.info(result);
+
+        PersonAdapterWrapper resultAdapter = new PersonAdapterWrapper(result);
 
         File someAgeAdvanced = new File("resources/personOperation/someAgeAdvanced.xml");
         JAXBXMLHandler.marshal(result,someAgeAdvanced);

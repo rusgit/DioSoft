@@ -1,6 +1,8 @@
 package com.diosoft.service;
 
 import com.diosoft.common.Person;
+import com.diosoft.common.PersonAdapter;
+import com.diosoft.common.PersonAdapterWrapper;
 import com.diosoft.helper.CollectionHelper;
 import com.diosoft.util.JAXBXMLHandler;
 import org.apache.log4j.Logger;
