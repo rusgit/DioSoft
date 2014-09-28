@@ -2,9 +2,10 @@ package com.diosoft.util;
 
 import com.diosoft.common.Person;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 import java.util.Map;
+
+import static org.junit.Assert.assertTrue;
 
 public class PersonGeneratorImplTest {
 
@@ -23,7 +24,7 @@ public class PersonGeneratorImplTest {
 
         assertTrue(expectedFirstSize==firstArray.length);
         assertTrue(expectedSecondSize==secondArray.length);
-
+//local code review (vtegza): there is no case when it should not be an instance of Person @ 9/28/2014
         for (int i=0; i<firstArray.length; i++){
             assertTrue(firstArray[i] instanceof Person);
         }

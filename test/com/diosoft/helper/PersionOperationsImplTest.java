@@ -144,7 +144,7 @@ public class PersionOperationsImplTest {
         Person[] personsArray2 = {person12,person15,person26,person29};
         Person[] personsArray3 = {person27,person30,person32,person35};
         Person[] expectedArray = {person17,person20};
-
+//local code review (vtegza): use just as list - it actually return instance of ArrayList @ 9/28/2014
         List<Person> persons1 = new ArrayList<>(Arrays.asList(personsArray1));
         List<Person> persons2 = new ArrayList<>(Arrays.asList(personsArray2));
         List<Person> persons3 = new ArrayList<>(Arrays.asList(personsArray3));

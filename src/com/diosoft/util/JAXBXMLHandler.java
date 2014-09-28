@@ -3,16 +3,16 @@ package com.diosoft.util;
 import com.diosoft.common.Person;
 import com.diosoft.common.PersonAdapter;
 import com.diosoft.common.PersonAdapterWrapper;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 
 public class JAXBXMLHandler {
 
@@ -28,6 +28,7 @@ public class JAXBXMLHandler {
     }
 
     public static Collection<PersonAdapter> unmarshal(File importFile) throws JAXBException {
+        //local code review (vtegza): create variable in place where it is actually needed @ 9/28/2014
         PersonAdapterWrapper persons = new PersonAdapterWrapper();
 
         JAXBContext context = JAXBContext.newInstance(PersonAdapterWrapper.class);

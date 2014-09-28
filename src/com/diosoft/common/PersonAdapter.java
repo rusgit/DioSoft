@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+//local code review (vtegza): in most of cases Adapters are used only in place of marshaling/unmarshalling @ 9/28/2014
 public class PersonAdapter implements Comparable<PersonAdapter> {
 
     @XmlAttribute
@@ -40,6 +41,7 @@ public class PersonAdapter implements Comparable<PersonAdapter> {
         return name;
     }
 
+    //local code review (vtegza): if you use it only for marshaling - you do not need equals/hashcode/toString @ 9/28/2014
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Person { ");

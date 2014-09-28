@@ -3,11 +3,15 @@ package com.diosoft.service;
 import com.diosoft.common.Person;
 import com.diosoft.helper.ArrayHelper;
 import com.diosoft.util.PersonComparator;
-import com.diosoft.util.ServiceFactory;
 import org.junit.Test;
+
 import java.util.Arrays;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class ArrayServiceImplTest {
     //local code review (vtegza): no need to be final @ 31.08.14
@@ -47,6 +51,7 @@ public class ArrayServiceImplTest {
         Arrays.sort(actualArray, new PersonComparator());
 
         assertArrayEquals(expectedArray, actualArray);
+        //local code review (vtegza): no need in times(1) @ 9/28/2014
         verify(mock,times(1)).leftUnion(firstArray,secondArray);
     }
 

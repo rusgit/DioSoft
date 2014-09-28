@@ -2,6 +2,7 @@ package com.diosoft.common;
 
 public class Person implements Comparable<Person> {
 
+    //local code review (vtegza): use objects instead of primitives inside data objects @ 9/28/2014
     private final long id;
     private final String name;
     private final String lastName;

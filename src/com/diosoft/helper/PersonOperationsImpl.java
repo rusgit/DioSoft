@@ -52,7 +52,7 @@ public class PersonOperationsImpl implements PersonOperations {
 
     @Override
     public Map<String, List<Person>> getInnerAndOuterPersons(List<Person>... personsArray) {
-
+//local code review (vtegza): I am not sure that method name explain what it actually doing @ 9/28/2014
         if (personsArray.length<2) throw new IllegalArgumentException();
 
         Map<String, List<Person>> result = new HashMap<String, List<Person>>();
@@ -133,6 +133,7 @@ public class PersonOperationsImpl implements PersonOperations {
         List<Person> inner =  getInnerPerson(personsArray);
 
         List<Person> outer = new ArrayList<Person>();
+        //local code review (vtegza): use foreach loop @ 9/28/2014
         for (int i=0; i<personsArray.length; i++) {
             outer.addAll(personsArray[i]);
         }

@@ -1,21 +1,22 @@
 package com.diosoft.service;
 
 import com.diosoft.common.Person;
-import com.diosoft.common.PersonAdapter;
-import com.diosoft.common.PersonAdapterWrapper;
 import com.diosoft.helper.CollectionHelper;
 import com.diosoft.util.JAXBXMLHandler;
 import org.apache.log4j.Logger;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 
 @Named("collectionServiceImpl")
 public class CollectionServiceImpl implements CollectionService {
 
+    //local code review (vtegza): "logger" is conventional name @ 9/28/2014
     private static final Logger LOG = Logger.getLogger(CollectionServiceImpl.class);
 
     @Inject

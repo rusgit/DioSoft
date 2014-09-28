@@ -438,7 +438,7 @@ public class CollectionServiceImplTest {
         Person[] firstArray = {person1, person3, person2, person1_dupl, person3_dupl};
         Person[] secondArray = {person3, person2, person3_dupl};
         Person[] expectedArray = {person1, person1_dupl};
-
+//local code review (vtegza): use just as list - it actually return instance of ArrayList @ 9/28/2014
         List<Person> firstColl = new ArrayList<>(Arrays.asList(firstArray));
         List<Person> secondColl = new ArrayList<>(Arrays.asList(secondArray));
         List<Person> expectedColl = new ArrayList<>(Arrays.asList(expectedArray));

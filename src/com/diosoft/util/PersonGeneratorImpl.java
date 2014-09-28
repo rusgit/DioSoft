@@ -96,7 +96,7 @@ public class PersonGeneratorImpl implements PersonGenerator {
     public List<Person>[] createSameSurnameMore2array(int numberArrays) {
 
         if (numberArrays < 2) throw new IllegalArgumentException();
-
+//local code review (vtegza): use Arrays.asList @ 9/28/2014
         Person[] standartArray = {
                 person11, person12, person13, person14, person15,
                 person16, person17, person18, person19, person20,
